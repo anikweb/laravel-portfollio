@@ -11,7 +11,12 @@ use Intervention\Image\Facades\Image;
 class TestimonialControllers extends Controller
 {
     function testimonialView(){
-        return 'ok';
+
+
+        return view('backend.pages.testimonial.view-testimonial',[
+            'siteItem' => SiteSettings::first(),
+            'testimonial' => Testimonial::orderBy('id','desc')->paginate(10),
+        ]);
     }
     function testimonialAdd(){
         return view('backend.pages.testimonial.add-testimonial',[

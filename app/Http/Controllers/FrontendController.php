@@ -13,7 +13,7 @@ class FrontendController extends Controller
         return view('frontend.master',[
             'siteItem' =>SiteSettings::first(),
             'about' =>About::first(),
-            'testimonial'=>Testimonial::all(),
+            'testimonial'=>Testimonial::latest()->get(),
         ]);
     }
 }
