@@ -15,7 +15,7 @@ class TestimonialControllers extends Controller
 
         return view('backend.pages.testimonial.view-testimonial',[
             'siteItem' => SiteSettings::first(),
-            'testimonial' => Testimonial::orderBy('id','desc')->paginate(10),
+            'testimonial' => Testimonial::latest()->paginate(10),
         ]);
     }
     function testimonialAdd(){
@@ -38,5 +38,45 @@ class TestimonialControllers extends Controller
         }
         $testimonial->save();
         return redirect()->route('testimonialView')->with('success','Testimonial add success');
+    }
+    function testimonialDelete($id){
+        $softDelete = Testimonial::findOrFail($id)->delete();
+        if($softDelete){
+            return back()->with('success','Testimonial Deleted.');
+        }else{
+            return back()->with('fail','Testimonial Deleted failed.');
+        }
+    }
+    function testimonialEdit($id){
+        return view('backend.pages.testimonial.edit-testimonial',[
+            'siteItem' => SiteSettings::first(),
+            'testimonial'=>Testimonial::findOrFail($id),
+        ]);
+    }
+    function testimonialEditUpdate(Request $request){
+        // return 'ok';
+        $update = Testimonial::findOrFail($request->id);
+        if($update->name == $request->name && $update->designation == $request->designation && $update->praise == $request->summary && $request->file('image')==''){
+            return back()->with('fail','can\'t update. Because you did not change any field.');
+        }else{
+            $update->name = $request->name;
+            $update->designation = $request->designation;
+            $update->praise = $request->summary;
+
+            if($request->hasFile('image')){
+                $oldImage = public_path('front/images/testimonial/'.$update->image);
+                if(file_exists($oldImage)){
+                    unlink($oldImage);
+                }
+                $image = $request->file('image');
+                $newName = Str::slug($request->name).'-'.Str::random(10).'.'.$image->getClientOriginalExtension();
+                $destination = public_path('front/images/testimonial/'.$newName);
+                Image::make($image)->save($destination);
+                $update->image = $newName;
+            }
+            $update->save();
+            return redirect()->route('testimonialView')->with('success','Testimonial Updated.');
+        }
+
     }
 }

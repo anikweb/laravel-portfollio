@@ -43,11 +43,10 @@
                                             <td>{{ $testItem->praise }}</td>
                                             <td>{{ $testItem->created_at->diffForHumans() }}</td>
                                             <td>
-                                                <a class="btn btn-info" href="#"><span class="icon-note"></span> Edit</a>
+                                                <a class="btn btn-info" href="{{ route('testimonialEdit',$testItem->id) }}"><span class="icon-note"></span> Edit</a>
                                             </td>
                                             <td>
-
-                                                <a class="btn btn-danger" href="#"><span class="icon-trash"></span> Move to Trash</a>
+                                                <button type="button" data-id="{{ $testItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
                                             </td>
 
                                         </tr>
@@ -69,7 +68,33 @@
 </div><!-- Page Inner -->
 @endsection
 @section('footer_js')
+<script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
+    // swal('hello');.
+    // // testimonial delete
+    $('.moveTrash').click(function(){
+        var testId = $(this).attr('data-id');
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("Testimonial has been deleted!", {
+                icon: "success",
+                });
+                setTimeout(function(){
+                    window.location.href = "testimonial-delete/"+testId;
+                },1000);
+            } else {
+                swal("Testimonial is safe!");
+            }
+        });
+
+
+    });
     @if (session('success'))
         toastr["success"]("{{ session('success') }}")
             toastr.options = {
