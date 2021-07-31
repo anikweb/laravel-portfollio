@@ -5,6 +5,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\SiteSettingsControllers;
 use App\Http\Controllers\AboutControllers;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\TestimonialControllers;
 
 /*
@@ -45,5 +46,9 @@ Route::get('testimonial-list',[TestimonialControllers::class, 'testimonialView']
 Route::get('testimonial-delete/{id}',[TestimonialControllers::class, 'testimonialDelete'])->middleware(['auth'])->name('testimonialDelete');
 Route::get('testimonial-edit/{id}',[TestimonialControllers::class, 'testimonialEdit'])->middleware(['auth'])->name('testimonialEdit');
 Route::post('testimonial-edit-update',[TestimonialControllers::class, 'testimonialEditUpdate'])->middleware(['auth'])->name('testimonialEditUpdate');
-
+// Skill
+Route::get('skills',[SkillController::class, 'skillView'])->middleware(['auth'])->name('skillView');
+Route::get('add-skill',[SkillController::class, 'skillAdd'])->middleware(['auth'])->name('skillAdd');
+Route::post('update-skill',[SkillController::class, 'skillUpdate'])->middleware(['auth'])->name('skillUpdate');
+Route::get('delete-skill/{id}',[SkillController::class, 'skillDelete'])->middleware(['auth'])->name('skillDelete');
 require __DIR__.'/auth.php';

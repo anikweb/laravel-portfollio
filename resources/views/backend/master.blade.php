@@ -337,7 +337,7 @@
                         </li>
 
                         <li class="droplink">
-                            <a href="#" class="waves-effect waves-button" target="_blank"><span class="menu-icon icon-energy"></span><p>Testimonial</p><span class="arrow"></span></a>
+                            <a href="#" class="waves-effect waves-button" target="_blank"><span class="menu-icon icon-speech"></span><p>Testimonial</p><span class="arrow"></span></a>
                                 <ul class="sub-menu" style="display: none;">
                                     <li>
                                         <a href="{{ route('testimonialView') }}" class="waves-effect waves-button"> <span class="icon-eye"></span> View Testimonial</a>
@@ -345,8 +345,16 @@
                                     </li>
                                 </ul>
                         </li>
-
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-wrench"></span><p>Settings</p><span class="arrow"></span></a>
+                        <li class="droplink">
+                            <a href="#" class="waves-effect waves-button" target="_blank"><span class="menu-icon  icon-support"></span><p>Skills</p><span class="arrow"></span></a>
+                                <ul class="sub-menu" style="display: none;">
+                                    <li>
+                                        <a href="{{ route('skillView') }}" class="waves-effect waves-button"> <span class="icon-eye"></span> View Skills</a>
+                                        <a href="{{ route('skillAdd') }}" class="waves-effect waves-button"> <span class="icon-plus"></span> Add Skills</a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span><p>Settings</p><span class="arrow"></span></a>
                             <ul class="sub-menu" style="display: none;">
                                 <li>
                                     <a href="{{ route('siteSettings') }}" class="waves-effect waves-button" >Site Settings</a>

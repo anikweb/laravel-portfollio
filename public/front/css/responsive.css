@@ -3,9 +3,9 @@
 		display:block !important;
 		height:auto !important;
 	}
-    
+
 }
-@media only screen and (max-width: 1440px) {
+@m    edia only screen and (max-width: 1440px) {
 	.welcome-title {
 		font-size: 100px;
 		margin-bottom:20px;
@@ -69,11 +69,11 @@
 	.about-img {
 		margin-right:15px;
 	}
-    
+
 }
 @media only screen and (max-width: 1199px) {
 	#fp-nav.fp-right {
-		right:5px;
+		r    ight:5px;
 	}
 	.welcome-title:before {
 		margin: 20px auto 15px;
@@ -130,7 +130,7 @@
 	.menu-trigger {
 		margin:0;
 	}
-    
+
 }
 @media only screen and (max-width: 991px) {
 	.welcome-box {
@@ -139,7 +139,7 @@
 	.navbar-nav li a {
 		font-size:13px;
 	}
-	.navbar-nav li {
+	.n    avbar-nav li {
 		margin-left:25px;
 	}
 	.footer-right {
@@ -195,7 +195,7 @@
 	.contact-row {
 		padding: 42px 45px;
 	}
-    
+
 }
 @media only screen and (max-width: 767px) {
 	#header {
@@ -207,7 +207,7 @@
 	#navigation button i {
 		color: #1e1e1e;
 	}
-	.welcome-box {
+	.    welcome-box {
 		padding: 150px 0px;
 	}
 	#logo {
@@ -390,7 +390,7 @@
 	}
 	.skill-item {
 	  border-bottom: 1px solid rgba(250,250,250,0.1);
-	  margin-bottom: 20px;
+	  margin-bottom: -10px;
 	  padding-bottom: 50px;
 	}
 	.skills-row h6 {
@@ -419,7 +419,7 @@
 	.client-row {
 		padding-left: 0;
 	}
-	
+
 }
 @media only screen and (max-width: 460px) {
 	h4 {
@@ -440,3 +440,4 @@
 		left: 43%;
 	}
 }
+	

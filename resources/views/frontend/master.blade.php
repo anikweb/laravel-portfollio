@@ -218,34 +218,16 @@ https://templatemo.com/tm-528-elegance
                             <div class="skills-row animate" data-animate="fadeInDown">
                                 <div class="row">
                                     <div class="col-md-8 offset-md-2">
-                                        <div class="skill-item">
-                                            <h6>HTML CSS</h6>
-                                            <div class="skill-bar">
-                                                <span>70%</span>
-                                                <div class="filled-bar"></div>
+                                        @foreach ($skills as $sItem)
+                                            <div class="skill-item">
+                                                <h6>{{ $sItem->name }}</h6>
+                                                <div class="skill-bar">
+                                                    <span>{{ $sItem->percentage.'%' }}</span>
+                                                    <div class="filled-bar" style="width: {{ $sItem->percentage }}% !important;"></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <h6>PSD Design</h6>
-                                            <div class="skill-bar">
-                                                <span>90%</span>
-                                                <div class="filled-bar-2"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <h6>Social Media</h6>
-                                            <div class="skill-bar">
-                                                <span>70%</span>
-                                                <div class="filled-bar"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item last-skill">
-                                            <h6>Leadership</h6>
-                                            <div class="skill-bar">
-                                                <span>90%</span>
-                                                <div class="filled-bar-2"></div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
                             </div>
