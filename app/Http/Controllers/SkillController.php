@@ -43,4 +43,22 @@ class SkillController extends Controller
 
         }
     }
+    function skillEdit($id){
+        return view('backend.pages.skills.edit-skill',[
+            'siteItem'=>SiteSettings::first(),
+            'skill' =>Skill::findOrFail($id),
+        ]);
+    }
+    function skillEditUpdate(Request $request){
+        $skillUpdate = Skill::findOrFail($request->id);
+
+        if($skillUpdate->name != $request->name || $skillUpdate->percentage != $request->percentage){
+            $skillUpdate->name = Str::upper($request->name);
+            $skillUpdate->percentage = $request->percentage;
+            $skillUpdate->save();
+            return redirect()->route('skillView')->with('success','Skill updated');
+        }else{
+            return back()->with('fail','Skill updated failed.Change any field to change!');
+        }
+    }
 }

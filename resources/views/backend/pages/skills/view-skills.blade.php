@@ -37,12 +37,11 @@
                                             <td style="text-align: center">{{ $skillItem->percentage.'%' }}</td>
                                             <td style="text-align: center">{{ $skillItem->created_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
-                                                <a class="btn btn-info" href="#"><span class="icon-note"></span> Edit</a>
+                                                <a class="btn btn-info" href="{{ route('skillEdit',$skillItem->id) }}"><span class="icon-note"></span> Edit</a>
                                             </td>
                                             <td style="text-align: center">
                                                 <button type="button" data-id="{{ $skillItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
                                             </td>
-
                                         </tr>
                                     @empty
                                     <td style="text-align: center" colspan="5" class="text-danger">Skills Empty</td>
@@ -64,7 +63,6 @@
 </div><!-- Page Inner -->
 @endsection
 @section('footer_js')
-<script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     // Skills delete
     $('.moveTrash').click(function(){

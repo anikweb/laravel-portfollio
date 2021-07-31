@@ -51,4 +51,6 @@ Route::get('skills',[SkillController::class, 'skillView'])->middleware(['auth'])
 Route::get('add-skill',[SkillController::class, 'skillAdd'])->middleware(['auth'])->name('skillAdd');
 Route::post('update-skill',[SkillController::class, 'skillUpdate'])->middleware(['auth'])->name('skillUpdate');
 Route::get('delete-skill/{id}',[SkillController::class, 'skillDelete'])->middleware(['auth'])->name('skillDelete');
+Route::get('edit-skill/{slug}',[SkillController::class, 'skillEdit'])->middleware(['auth'])->name('skillEdit');
+Route::post('update-edit-skill',[SkillController::class, 'skillEditUpdate'])->middleware(['auth'])->name('skillEditUpdate');
 require __DIR__.'/auth.php';
