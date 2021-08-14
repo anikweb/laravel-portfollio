@@ -7,8 +7,6 @@ use App\Models\SiteSettings;
 class BackendController extends Controller
 {
     function dashboard(){
-        return view('backend.dashboard',[
-            'siteItem'=>SiteSettings::first(),
-        ]);
+        return view('backend.dashboard');
     }
 }

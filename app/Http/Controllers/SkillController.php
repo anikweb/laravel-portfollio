@@ -11,14 +11,11 @@ class SkillController extends Controller
 {
     function skillView(){
         return view('backend.pages.skills.view-skills',[
-            'siteItem'=> SiteSettings::first(),
             'skills' => Skill::paginate(10),
         ]);
     }
     function skillAdd(){
-        return view('backend.pages.skills.add-skill',[
-            'siteItem'=>SiteSettings::first(),
-        ]);
+        return view('backend.pages.skills.add-skill');
     }
     function skillUpdate(Request $request){
         $request->validate([
@@ -45,7 +42,6 @@ class SkillController extends Controller
     }
     function skillEdit($id){
         return view('backend.pages.skills.edit-skill',[
-            'siteItem'=>SiteSettings::first(),
             'skill' =>Skill::findOrFail($id),
         ]);
     }

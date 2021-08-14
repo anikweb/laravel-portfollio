@@ -12,13 +12,11 @@ class AboutControllers extends Controller
 {
     function aboutSettings(){
         return view('backend.pages.about-settings',[
-            'siteItem' =>SiteSettings::first(),
             'about' => About::first(),
         ]);
     }
     function aboutSettingsEdit($slug){
         return view('backend.pages.about-settings-edit',[
-            'siteItem' =>SiteSettings::first(),
             'about' =>About::first(),
             'slug' =>$slug,
         ]);

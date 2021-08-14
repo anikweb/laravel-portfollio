@@ -23,7 +23,7 @@
                                         <th width='1'>1</th>
                                         <th>Logo</th>
                                         <th>
-                                            <img width="100px" style="border:1px solid rgba(165, 158, 158, 0.774);padding:3px" src="{{ asset('front/images/site-logo/'.$siteItem->logo) }}" alt="{{ $siteItem->title }}">
+                                            <img width="100px" style="border:1px solid rgba(165, 158, 158, 0.774);padding:3px" src="{{ asset('front/images/site-logo/'.siteInfo()->logo) }}" alt="{{ siteInfo()->title }}">
                                         </th>
                                         <th><a href="{{ route('siteSettingsEdit','logo') }}" class="btn btn-info"> <span class="icon-note"></span> Edit</a></th>
                                     </tr>
@@ -31,20 +31,20 @@
                                         <th width='1'>2</th>
                                         <th>Icon</th>
                                         <th>
-                                            <img width="50px" style="border:1px solid rgba(165, 158, 158, 0.774);padding:3px" src="{{ asset('front/images/site-icon/'.$siteItem->icon) }}" alt="{{ $siteItem->title }}">
+                                            <img width="50px" style="border:1px solid rgba(165, 158, 158, 0.774);padding:3px" src="{{ asset('front/images/site-icon/'.siteInfo()->icon) }}" alt="{{ siteInfo()->title }}">
                                         </th>
                                         <th><a href="{{ route('siteSettingsEdit','icon') }}" class="btn btn-info"> <span class="icon-note"></span> Edit</a></th>
                                     </tr>
                                     <tr>
                                         <th width='1'>3</th>
                                         <th>Title</th>
-                                        <th>{{ $siteItem->title }}</th>
+                                        <th>{{ siteInfo()->title }}</th>
                                         <th><a href="{{ route('siteSettingsEdit','title') }}" class="btn btn-info"> <span class="icon-note"></span> Edit</a></th>
                                     </tr>
                                     <tr>
                                         <th width='1'>4</th>
                                         <th>Description</th>
-                                        <th>{{ $siteItem->description }}</th>
+                                        <th>{{ siteInfo()->description }}</th>
                                         <th><a href="{{ route('siteSettingsEdit','description') }}" class="btn btn-info"> <span class="icon-note"></span> Edit</a></th>
                                     </tr>
                                     <tr>
@@ -52,7 +52,7 @@
                                         <th>Background Video</th>
                                         <th>
                                             <video width="300px" controls muted>
-                                                <source src="{{ asset('front/video/background-video/'.$siteItem->backgroundVideo) }}" type="video/mp4" >
+                                                <source src="{{ asset('front/video/background-video/'.siteInfo()->backgroundVideo) }}" type="video/mp4" >
                                             </video>
                                             <span class="text-danger"> <span class="icon-ban"></span> Sound muted in frontend</span>
                                         </th>

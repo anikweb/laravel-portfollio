@@ -14,14 +14,11 @@ class TestimonialControllers extends Controller
 
 
         return view('backend.pages.testimonial.view-testimonial',[
-            'siteItem' => SiteSettings::first(),
             'testimonial' => Testimonial::latest()->paginate(10),
         ]);
     }
     function testimonialAdd(){
-        return view('backend.pages.testimonial.add-testimonial',[
-            'siteItem' => SiteSettings::first(),
-        ]);
+        return view('backend.pages.testimonial.add-testimonial');
     }
     function testimonialUpdate(Request $request){
         // return $request;
@@ -49,7 +46,6 @@ class TestimonialControllers extends Controller
     }
     function testimonialEdit($id){
         return view('backend.pages.testimonial.edit-testimonial',[
-            'siteItem' => SiteSettings::first(),
             'testimonial'=>Testimonial::findOrFail($id),
         ]);
     }

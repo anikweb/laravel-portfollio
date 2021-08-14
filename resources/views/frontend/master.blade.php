@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="//fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-
-    <title>{{ $siteItem->title }}</title>
+    <title>{{ siteInfo()->title }}</title>
 <!--
 Elegance Template
 https://templatemo.com/tm-528-elegance
@@ -28,7 +25,7 @@ https://templatemo.com/tm-528-elegance
     <link rel="stylesheet" href="{{ asset('front/css/templatemo-style.css') }}">
 
     <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
-    <link rel="icon" href="{{ asset('front/images/site-icon/'.$siteItem->icon) }}">
+    <link rel="icon" href="{{ asset('front/images/site-icon/'.siteInfo()->icon) }}">
 
     </head>
 
@@ -45,8 +42,8 @@ https://templatemo.com/tm-528-elegance
         <header id="header">
             <div class="container-fluid">
                 <div class="navbar">
-                    <a href="{{ route('frontend') }}" id="logo" title="{{ $siteItem->title }}">
-                        <img width="80px" src="{{ asset('front/images/site-logo/'.$siteItem->logo) }}" alt="{{ $siteItem->title }}">
+                    <a href="{{ route('frontend') }}" id="logo" title="{{ siteInfo()->title }}">
+                        <img width="80px" src="{{ asset('front/images/site-logo/'.siteInfo()->logo) }}" alt="{{ siteInfo()->title }}">
                     </a>
                     <div class="navigation-row">
                         <nav id="navigation">
@@ -68,7 +65,7 @@ https://templatemo.com/tm-528-elegance
             </div>
         </header>
         <video autoplay muted loop id="myVideo">
-          <source src="{{ asset('front/video/background-video/'.$siteItem->backgroundVideo) }}" type="video/mp4">
+          <source src="{{ asset('front/video/background-video/'.siteInfo()->backgroundVideo) }}" type="video/mp4">
         </video>
 
         <div id="fullpage" class="fullpage-default">
@@ -77,8 +74,8 @@ https://templatemo.com/tm-528-elegance
                 <div class="section-inner">
                     <div class="welcome-box">
                         <span class="welcome-first animate" data-animate="fadeInUp">Hello, I Am</span>
-                        <h1 class="welcome-title animate" data-animate="fadeInUp">{{ $siteItem->title }}</h1>
-                        <p class="animate" data-animate="fadeInUp">{{ $siteItem->description }}</p>
+                        <h1 class="welcome-title animate" data-animate="fadeInUp">{{ siteInfo()->title }}</h1>
+                        <p class="animate" data-animate="fadeInUp">{{ siteInfo()->description }}</p>
                         <div class="mx-auto">
                             <div class="scroll-down next-section animate mx-auto" data-animate="fadeInUp"><img src="{{ asset('front/images/mouse-scroll.png') }}" alt=""><span>Scroll Down</span></div>
                         </div>
@@ -125,7 +122,7 @@ https://templatemo.com/tm-528-elegance
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <figure class="about-img animate" data-animate="fadeInUp"><img width="500px" src="{{ asset('front/images/about/'.$about->image) }}" class="rounded" alt="{{ $siteItem->title }}"></figure>
+                                        <figure class="about-img animate" data-animate="fadeInUp"><img width="500px" src="{{ asset('front/images/about/'.$about->image) }}" class="rounded" alt="{{ siteInfo()->title }}"></figure>
                                     </div>
                                 </div>
                             </div>

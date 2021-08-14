@@ -32,7 +32,7 @@
                                             <input type="file" name="EditableValue" id="{{ $slug }}" class="form-control " style="padding: 10px 10px 30px 10px !important" onchange="document.getElementById('imagePreview').src = window.URL.createObjectURL(this.files[0])">
                                         </div>
                                         <div class="col-md-6">
-                                            <img draggable="false" width="200px" src="{{ asset('front/images/about/'.$about->image) }}" alt="{{ $siteItem->title }}" id="imagePreview">
+                                            <img draggable="false" width="200px" src="{{ asset('front/images/about/'.$about->image) }}" alt="{{ siteInfo()->title }}" id="imagePreview">
                                         </div>
                                     </div>
                                 @endif

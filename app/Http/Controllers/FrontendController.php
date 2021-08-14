@@ -12,7 +12,6 @@ class FrontendController extends Controller
 {
     function  frontend(){
         return view('frontend.master',[
-            'siteItem' =>SiteSettings::first(),
             'about' =>About::first(),
             'testimonial'=>Testimonial::latest()->get(),
             'skills' =>Skill::orderBy('id','desc')->get(),

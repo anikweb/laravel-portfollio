@@ -40,9 +40,9 @@ Route::get('about-settings',[AboutControllers::class, 'aboutSettings'])->middlew
 Route::get('about-settings-edit/{slug}',[AboutControllers::class, 'aboutSettingsEdit'])->middleware(['auth'])->name('aboutSettingsEdit');
 Route::post('update-about-settings',[AboutControllers::class, 'aboutSettingsUpdate'])->middleware(['auth'])->name('aboutSettingsUpdate');
 // Testimonial
+Route::get('testimonial-list',[TestimonialControllers::class, 'testimonialView'])->middleware(['auth'])->name('testimonialView');
 Route::get('add-testimonial',[TestimonialControllers::class, 'testimonialAdd'])->middleware(['auth'])->name('testimonialAdd');
 Route::post('update-testimonial',[TestimonialControllers::class, 'testimonialUpdate'])->middleware(['auth'])->name('testimonialUpdate');
-Route::get('testimonial-list',[TestimonialControllers::class, 'testimonialView'])->middleware(['auth'])->name('testimonialView');
 Route::get('testimonial-delete/{id}',[TestimonialControllers::class, 'testimonialDelete'])->middleware(['auth'])->name('testimonialDelete');
 Route::get('testimonial-edit/{id}',[TestimonialControllers::class, 'testimonialEdit'])->middleware(['auth'])->name('testimonialEdit');
 Route::post('testimonial-edit-update',[TestimonialControllers::class, 'testimonialEditUpdate'])->middleware(['auth'])->name('testimonialEditUpdate');

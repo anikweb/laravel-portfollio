@@ -19,10 +19,10 @@
                             <div class="form-group">
                                 <label for="{{ $slug }}">@if ($slug=='logo')Change Logo @elseif($slug=='icon')Change Icon @elseif($slug=='title') Edit Title @elseif($slug=='description') Edit Description @elseif($slug=='background-video') Edit Background Video @endif
                                 </label>
-                                <input type="hidden" name="settingId" value="{{ $siteItem->id }}">
+                                <input type="hidden" name="settingId" value="{{ siteInfo()->id }}">
                                 <input type="hidden" name="settingItem" value="{{ $slug }}">
                                 @if ($slug != 'logo' && $slug != 'icon' && $slug != 'background-video' && $slug != 'site-color')
-                                    <input type="text" class="form-control m-t-xxs" id="{{ $slug }}" value="@if($slug=='title'){{ $siteItem->title }}@elseif($slug=='description'){{ $siteItem->description }}@endif" name="EditableValue">
+                                    <input type="text" class="form-control m-t-xxs" id="{{ $slug }}" value="@if($slug=='title'){{ siteInfo()->title }}@elseif($slug=='description'){{ siteInfo()->description }}@endif" name="EditableValue">
                                 @endif
                                 @if ($slug == 'logo')
                                     <div class="row">
@@ -30,7 +30,7 @@
                                             <input type="file" name="EditableValue" id="{{ $slug }}" class="form-control " style="padding: 10px 10px 30px 10px !important" onchange="document.getElementById('logoPreview').src = window.URL.createObjectURL(this.files[0])">
                                         </div>
                                         <div class="col-md-6">
-                                            <img draggable="false" width="200px" style="border:1px solid rgb(172, 170, 170);padding:3px;" src="{{ asset('front/images/site-logo/'.$siteItem->logo) }}" alt="{{ $slug }}" id="logoPreview">
+                                            <img draggable="false" width="200px" style="border:1px solid rgb(172, 170, 170);padding:3px;" src="{{ asset('front/images/site-logo/'.siteInfo()->logo) }}" alt="{{ $slug }}" id="logoPreview">
                                         </div>
                                     </div>
                                 @elseif ($slug == 'icon')
@@ -39,7 +39,7 @@
                                             <input type="file" name="EditableValue" id="{{ $slug }}" class="form-control " style="padding: 10px 10px 30px 10px !important" onchange="document.getElementById('iconPreview').src = window.URL.createObjectURL(this.files[0])">
                                         </div>
                                         <div class="col-md-6">
-                                            <img draggable="false" width="100px" style="border:1px solid rgb(172, 170, 170);padding:3px;" src="{{ asset('front/images/site-icon/'.$siteItem->icon) }}" alt="{{ $slug }}" id="iconPreview">
+                                            <img draggable="false" width="100px" style="border:1px solid rgb(172, 170, 170);padding:3px;" src="{{ asset('front/images/site-icon/'.siteInfo()->icon) }}" alt="{{ $slug }}" id="iconPreview">
                                         </div>
                                     </div>
                                 @elseif($slug == 'background-video')
@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <video width="300px" controls muted class="video">
-                                                <source src="{{ asset('front/video/background-video/'.$siteItem->backgroundVideo) }}" type="video/mp4" >
+                                                <source src="{{ asset('front/video/background-video/'.siteInfo()->backgroundVideo) }}" type="video/mp4" >
                                             </video>
                                             <span class="text-danger"> <span class="icon-ban"></span> Sound will muted in frontend</span>
 

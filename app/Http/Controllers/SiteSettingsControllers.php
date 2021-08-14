@@ -10,15 +10,12 @@ use Illuminate\Support\Str;
 class SiteSettingsControllers extends Controller
 {
     function siteSettings(){
-        return view('backend.pages.site-settings',[
-            'siteItem' => SiteSettings::first(),
-        ]);
+        return view('backend.pages.site-settings');
     }
 
     function siteSettingsEdit($slug){
         return view('backend.pages.site-settings-edit',[
             'slug' =>$slug,
-            'siteItem' => SiteSettings::first(),
         ]);
     }
 
