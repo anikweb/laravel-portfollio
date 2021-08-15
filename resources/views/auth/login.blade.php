@@ -52,9 +52,7 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
-            <div class="flex items-center text-danger">
-                <a class="text-muted" href="{{ route('register') }}">You haven't any account? Click for register.</a>
-            </div>
+
         </form>
     </x-auth-card>
 </x-guest-layout>

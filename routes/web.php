@@ -6,6 +6,7 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\SiteSettingsControllers;
 use App\Http\Controllers\AboutControllers;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TestimonialControllers;
 
 /*
@@ -53,4 +54,8 @@ Route::post('update-skill',[SkillController::class, 'skillUpdate'])->middleware(
 Route::get('delete-skill/{id}',[SkillController::class, 'skillDelete'])->middleware(['auth'])->name('skillDelete');
 Route::get('edit-skill/{slug}',[SkillController::class, 'skillEdit'])->middleware(['auth'])->name('skillEdit');
 Route::post('update-edit-skill',[SkillController::class, 'skillEditUpdate'])->middleware(['auth'])->name('skillEditUpdate');
+// Social
+Route::get('add-social',[SocialController::class,'SocialAdd'])->middleware(['auth'])->name('SocialAdd');
+Route::post('post-social',[SocialController::class,'SocialPost'])->middleware(['auth'])->name('SocialPost');
+Route::get('socials',[SocialController::class,'SocialView'])->middleware(['auth'])->name('SocialView');
 require __DIR__.'/auth.php';

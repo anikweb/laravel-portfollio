@@ -3,7 +3,7 @@
     <head>
         <!-- Title -->
         <title>
-            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @endif | {{ siteinfo()->title }}</title>
+            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @endif | {{ siteinfo()->title }}</title>
 
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
@@ -359,6 +359,27 @@
                                     </li>
                                 </ul>
                         </li>
+                        <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')) active open @endif">
+                            <a href="#" class="waves-effect waves-button" target="_blank">
+                                <span class="menu-icon  icon-support"></span>
+                                <p>Socials</p>
+                                <span class="arrow"></span>
+                            </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    <li class="@if(Route::is('SocialView')||Route::is('SocialEdit')) active @endif">
+                                        <a href="{{  route('SocialView') }}" class="waves-effect waves-button">
+                                            <span class="icon-plus"></span>
+                                            <p> View Socials</p>
+                                        </a>
+                                    </li>
+                                    <li class="@if(Route::is('SocialAdd')) active @endif">
+                                        <a href="{{ route('SocialAdd') }}" class="waves-effect waves-button">
+                                            <span class="icon-plus"></span>
+                                            <p>Add Socials</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
                         <li class="droplink @if(Route::is('siteSettings')||Route::is('siteSettingsEdit')||Route::is('aboutSettings')||Route::is('aboutSettingsEdit')) open active @endif">
                             <a href="#" class="waves-effect waves-button">
                                 <span class="menu-icon icon-settings"></span>
@@ -434,8 +455,7 @@
         <script src="{{ asset('backend/plugins/chartjs/Chart.bundle.min.js') }}"></script>
         <script src="{{ asset('backend/js/meteor.min.js') }}"></script>
         @if (session('sessionLogin'))
-
-        <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
+            <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
         @endif
         @yield('footer_js')
     </body>

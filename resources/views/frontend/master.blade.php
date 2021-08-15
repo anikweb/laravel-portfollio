@@ -434,10 +434,9 @@ https://templatemo.com/tm-528-elegance
         <div id="social-icons">
             <div class="text-right">
                 <ul class="social-icons">
-                    <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#" title="Instagram"><i class="fa fa-behance"></i></a></li>
+                    @foreach ($socials as $social)
+                        <li><a href="{{ $social->url_name }}" title="{{ $social->socialSite->site_name }}"><i class="{{ $social->socialSite->site_icon }}"></i></a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
