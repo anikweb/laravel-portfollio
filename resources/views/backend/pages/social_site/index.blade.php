@@ -23,23 +23,25 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">#</th>
-                                        <th style="text-align: center">Social Name</th>
-                                        <th style="text-align: center">Username</th>
+                                        <th style="text-align: center">Social Site Title</th>
+                                        <th style="text-align: center">Master URL</th>
+                                        <th style="text-align: center">Icon <em class="text-muted">(Supported font-awesome 4)</em></th>
                                         <th style="text-align: center">Last Update</th>
                                         <th colspan="2" style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($social as $socialItem)
+                                    @foreach ($social_sites as $social_site)
                                         <tr>
-                                            <th style="text-align: center" scope="row">{{$social->firstItem()+$loop->index }}</th>
-                                            <td style="text-align: center">{{ $socialItem->socialSite->site_name }}</td>
-                                            <td style="text-align: center">{{ $socialItem->socialSite->master_url.'/'.$socialItem->url_name }}</td>
-                                            <td style="text-align: center">{{ $socialItem->updated_at->diffForHumans() }}</td>
+                                            <th style="text-align: center" scope="row">{{$social_sites->firstItem()+$loop->index }}</th>
+                                            <td style="text-align: center">{{ $social_site->site_name }}</td>
+                                            <td style="text-align: center">{{ $social_site->master_url }}</td>
+                                            <td style="text-align: center">{{ $social_site->site_icon }}</td>
+                                            <td style="text-align: center">{{ $social_site->updated_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
-                                                <a class="btn btn-primary" target="_blank" href="{{ $socialItem->socialSite->master_url.'/'.$socialItem->url_name }}"><span class="  icon-paper-plane"></span> Visit</a>
-                                                <a class="btn btn-info" href="{{ route('SocialEdit',$socialItem->id) }}"><span class="icon-note"></span> Edit</a>
-                                                <button type="button" data-id="{{ $socialItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
+                                                <a class="btn btn-primary" target="_blank" href="{{ $social_site->master_url }}"><span class="  icon-paper-plane"></span> Visit</a>
+                                                <a class="btn btn-info" href=""><span class="icon-note"></span> Edit</a>
+                                                <button type="button" data-id="{{ $social_site->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
                                             </td>
 
                                         </tr>
@@ -48,7 +50,7 @@
                             </table>
                             <div class="">
                                 {{-- {{ $testItem->links() }} --}}
-                            {{ $social->links() }}
+                            {{ $social_sites->links() }}
 
                             </div>
                         </div>
@@ -66,7 +68,7 @@
     // swal('hello');.
     // // testimonial delete
     $('.moveTrash').click(function(){
-        var socialId = $(this).attr('data-id');
+        var testId = $(this).attr('data-id');
         swal({
             title: "Are you sure?",
             icon: "warning",
@@ -75,14 +77,14 @@
         })
         .then((willDelete) => {
             if (willDelete) {
-                swal("Social has been moved to trash!", {
+                swal("Testimonial has been deleted!", {
                 icon: "success",
                 });
                 setTimeout(function(){
-                    window.location.href = "delete-social/"+socialId;
+                    window.location.href = "testimonial-delete/"+testId;
                 },1000);
             } else {
-                swal("Social is safe!");
+                swal("Testimonial is safe!");
             }
         });
 

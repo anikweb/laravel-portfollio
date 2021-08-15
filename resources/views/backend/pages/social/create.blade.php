@@ -13,9 +13,9 @@
         {{--  Content Start  --}}
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-white">
+                <div class="panel panel-primary">
                     <div class="panel-heading clearfix">
-                        <h4 class="panel-title">Social Form</h4>
+                        <h2 class="panel-title">Social Form</h2>
                     </div>
                     <div class="panel-body">
                         <form action="{{ route('SocialPost') }}" method="POST">
@@ -25,7 +25,7 @@
                                     <div class="col-md-6">
                                         <label for="social_name">Social <span class="text-danger h4">*</span> </label>
                                         <select name="social_id" id="social_name" class="form-control" style="padding:5px 13px !important;">
-                                            <option value="Social" class="text-muted">--Social--</option>
+                                            <option value="Social" class="text-muted">--SELECT--</option>
                                             @foreach ($socialName as $social)
                                                 <option value="{{ $social->id }}">{{ $social->site_name }}</option>
                                             @endforeach

@@ -20,6 +20,7 @@ class SiteSettingsControllers extends Controller
     }
 
     function siteSettingsUpdate(Request $request){
+        // return $request;
         $siteSettings = SiteSettings::findOrFail($request->settingId);
         if($request->settingItem == 'logo'){
             if($request->hasFile('EditableValue')){
@@ -54,8 +55,12 @@ class SiteSettingsControllers extends Controller
         }
         elseif($request->settingItem == 'title'){
             $siteSettings->title =$request->EditableValue;
+            $siteSettings->save();
+            return redirect('site-settings')->with('success','Title Changed.');
         }elseif($request->settingItem == 'description'){
             $siteSettings->description =$request->EditableValue;
+            $siteSettings->save();
+            return redirect('site-settings')->with('success','Description Changed.');
         }elseif($request->settingItem == 'background-video'){
             if($request->hasFile('EditableValue')){
                 $video = $request->file('EditableValue');

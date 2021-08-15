@@ -3,8 +3,7 @@
     <head>
         <!-- Title -->
         <title>
-            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @endif | {{ siteinfo()->title }}</title>
-
+            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @endif | {{ siteinfo()->title }}</title>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Admin Dashboard Template" />
@@ -359,16 +358,16 @@
                                     </li>
                                 </ul>
                         </li>
-                        <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')) active open @endif">
+                        <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')||Route::is('SocialSiteView')||Route::is('SocialSiteEdit')||Route::is('SocialSiteAdd')) active open @endif">
                             <a href="#" class="waves-effect waves-button" target="_blank">
                                 <span class="menu-icon  icon-support"></span>
                                 <p>Socials</p>
                                 <span class="arrow"></span>
                             </a>
                                 <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                    <li class="@if(Route::is('SocialView')||Route::is('SocialEdit')) active @endif">
+                                    <li class="@if(Route::is('SocialView') || Route::is('SocialEdit')) active @endif">
                                         <a href="{{  route('SocialView') }}" class="waves-effect waves-button">
-                                            <span class="icon-plus"></span>
+                                            <span class="icon-eye"></span>
                                             <p> View Socials</p>
                                         </a>
                                     </li>
@@ -376,6 +375,18 @@
                                         <a href="{{ route('SocialAdd') }}" class="waves-effect waves-button">
                                             <span class="icon-plus"></span>
                                             <p>Add Socials</p>
+                                        </a>
+                                    </li>
+                                    <li class="@if(Route::is('SocialSiteView')) active @endif">
+                                        <a href="{{ route('SocialSiteView') }}" class="waves-effect waves-button">
+                                            <span class="icon-eye"></span>
+                                            <p>View Social Site</p>
+                                        </a>
+                                    </li>
+                                    <li class="@if(Route::is('SocialSiteAdd')) active @endif">
+                                        <a href="{{ route('SocialSiteAdd') }}" class="waves-effect waves-button">
+                                            <span class="icon-plus"></span>
+                                            <p>Add Social Site</p>
                                         </a>
                                     </li>
                                 </ul>

@@ -55,7 +55,14 @@ Route::get('delete-skill/{id}',[SkillController::class, 'skillDelete'])->middlew
 Route::get('edit-skill/{slug}',[SkillController::class, 'skillEdit'])->middleware(['auth'])->name('skillEdit');
 Route::post('update-edit-skill',[SkillController::class, 'skillEditUpdate'])->middleware(['auth'])->name('skillEditUpdate');
 // Social
+Route::get('socials',[SocialController::class,'SocialView'])->middleware(['auth'])->name('SocialView');
 Route::get('add-social',[SocialController::class,'SocialAdd'])->middleware(['auth'])->name('SocialAdd');
 Route::post('post-social',[SocialController::class,'SocialPost'])->middleware(['auth'])->name('SocialPost');
-Route::get('socials',[SocialController::class,'SocialView'])->middleware(['auth'])->name('SocialView');
+Route::get('edit-social/{id}',[SocialController::class,'SocialEdit'])->middleware(['auth'])->name('SocialEdit');
+Route::post('update-social',[SocialController::class,'SocialUpdate'])->middleware(['auth'])->name('SocialUpdate');
+Route::get('delete-social/{id}',[SocialController::class,'SocialDelete'])->middleware(['auth'])->name('SocialDelete');
+// social sites
+Route::get('social-sites',[SocialController::class,'SocialSiteView'])->middleware(['auth'])->name('SocialSiteView');
+Route::get('add-social-site',[SocialController::class,'SocialSiteAdd'])->middleware(['auth'])->name('SocialSiteAdd');
+Route::post('post-social-site',[SocialController::class,'SocialSitePost'])->middleware(['auth'])->name('SocialSitePost');
 require __DIR__.'/auth.php';

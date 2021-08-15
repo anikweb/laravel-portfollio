@@ -430,16 +430,17 @@ https://templatemo.com/tm-528-elegance
                 </div>
             </div>
         </div>
-
+        {{-- Social Start  --}}
         <div id="social-icons">
             <div class="text-right">
                 <ul class="social-icons">
                     @foreach ($socials as $social)
-                        <li><a href="{{ $social->url_name }}" title="{{ $social->socialSite->site_name }}"><i class="{{ $social->socialSite->site_icon }}"></i></a></li>
+                    <li><a href="{{ $social->socialSite->master_url.'/'.$social->url_name }}" target="_blank" title="{{ $social->socialSite->site_name }}"><i class="{{ $social->socialSite->site_icon }}"></i></a></li>
                     @endforeach
                 </ul>
             </div>
         </div>
+        {{-- Social end  --}}
     </div>
 
     <script src="{{ asset('front/js/jquery.js') }}"></script>
