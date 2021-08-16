@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="social_icon">Social Icon <em class="text-muted"> <span class="text-danger h4">*</span> ( supported font-awesome-4 )</em></label>
+                                        <label for="social_icon">Social Icon Class <em class="text-muted"> <span class="text-danger h4">*</span> ( supported font-awesome-4 )</em></label>
                                         <input type="text" id="social_icon" name="social_icon" placeholder="fa fa-example" class="form-control">
                                     </div>
                                 </div>

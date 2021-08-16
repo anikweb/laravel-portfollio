@@ -34,11 +34,11 @@
                                         <tr>
                                             <th style="text-align: center" scope="row">{{$social->firstItem()+$loop->index }}</th>
                                             <td style="text-align: center">{{ $socialItem->socialSite->site_name }}</td>
-                                            <td style="text-align: center">{{ $socialItem->socialSite->master_url.'/'.$socialItem->url_name }}</td>
+                                            <td style="text-align: center">{{ 'https://'.$socialItem->socialSite->master_url.'/'.$socialItem->url_name }}</td>
                                             <td style="text-align: center">{{ $socialItem->updated_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
-                                                <a class="btn btn-primary" target="_blank" href="{{ $socialItem->socialSite->master_url.'/'.$socialItem->url_name }}"><span class="  icon-paper-plane"></span> Visit</a>
-                                                <a class="btn btn-info" href="{{ route('SocialEdit',$socialItem->id) }}"><span class="icon-note"></span> Edit</a>
+                                                <a class="btn btn-primary" target="_blank" href="{{ 'https://'.$socialItem->socialSite->master_url.'/'.$socialItem->url_name }}"><span class="  icon-paper-plane"></span> Visit</a>
+                                                <a class="btn btn-info" href="{{ route('socialEdit',$socialItem->id) }}"><span class="icon-note"></span> Edit</a>
                                                 <button type="button" data-id="{{ $socialItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
                                             </td>
 

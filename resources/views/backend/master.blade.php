@@ -374,10 +374,10 @@
                                     <li class="@if(Route::is('SocialAdd')) active @endif">
                                         <a href="{{ route('SocialAdd') }}" class="waves-effect waves-button">
                                             <span class="icon-plus"></span>
-                                            <p>Add Socials</p>
+                                            <p>Add Social</p>
                                         </a>
                                     </li>
-                                    <li class="@if(Route::is('SocialSiteView')) active @endif">
+                                    <li class="@if(Route::is('SocialSiteView')||Route::is('SocialSiteEdit')) active @endif">
                                         <a href="{{ route('SocialSiteView') }}" class="waves-effect waves-button">
                                             <span class="icon-eye"></span>
                                             <p>View Social Site</p>

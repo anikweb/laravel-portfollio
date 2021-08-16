@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 <div class="panel panel-white">
                     <div class="panel-heading clearfix">
-                        <h4 class="panel-title">Socials</h4>
+                        <h4 class="panel-title">Social Sites</h4>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -35,12 +35,14 @@
                                         <tr>
                                             <th style="text-align: center" scope="row">{{$social_sites->firstItem()+$loop->index }}</th>
                                             <td style="text-align: center">{{ $social_site->site_name }}</td>
-                                            <td style="text-align: center">{{ $social_site->master_url }}</td>
-                                            <td style="text-align: center">{{ $social_site->site_icon }}</td>
+                                            <td style="text-align: center">{{ 'https://'.$social_site->master_url }}</td>
+                                            <td style="text-align: center">
+                                                <i class="{{ $social_site->site_icon }} bg-gray text-white p-5" style="color:#000000;border-radius:5px;padding:5px; font-size: 20px;"></i>
+                                            </td>
                                             <td style="text-align: center">{{ $social_site->updated_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
-                                                <a class="btn btn-primary" target="_blank" href="{{ $social_site->master_url }}"><span class="  icon-paper-plane"></span> Visit</a>
-                                                <a class="btn btn-info" href=""><span class="icon-note"></span> Edit</a>
+                                                <a class="btn btn-primary" target="_blank" href="{{ 'https://'.$social_site->master_url }}"><span class="  icon-paper-plane"></span> Visit</a>
+                                                <a class="btn btn-info" href="{{ route('SocialSiteEdit',$social_site->id) }}"><span class="icon-note"></span> Edit</a>
                                                 <button type="button" data-id="{{ $social_site->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
                                             </td>
 
@@ -68,7 +70,7 @@
     // swal('hello');.
     // // testimonial delete
     $('.moveTrash').click(function(){
-        var testId = $(this).attr('data-id');
+        var siteId = $(this).attr('data-id');
         swal({
             title: "Are you sure?",
             icon: "warning",
@@ -77,14 +79,14 @@
         })
         .then((willDelete) => {
             if (willDelete) {
-                swal("Testimonial has been deleted!", {
+                swal("Social Site has been moved to trash!", {
                 icon: "success",
                 });
                 setTimeout(function(){
-                    window.location.href = "testimonial-delete/"+testId;
+                    window.location.href = "delete-social-site/"+siteId;
                 },1000);
             } else {
-                swal("Testimonial is safe!");
+                swal("Social Site is safe!");
             }
         });
 

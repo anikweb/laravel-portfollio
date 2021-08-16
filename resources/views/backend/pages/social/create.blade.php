@@ -24,7 +24,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label for="social_name">Social <span class="text-danger h4">*</span> </label>
-                                        <select name="social_id" id="social_name" class="form-control" style="padding:5px 13px !important;">
+                                        <select name="social_id" id="social_name" class="form-control social_id" style="padding:5px 13px !important;">
                                             <option value="Social" class="text-muted">--SELECT--</option>
                                             @foreach ($socialName as $social)
                                                 <option value="{{ $social->id }}">{{ $social->site_name }}</option>
@@ -32,9 +32,14 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="social_username">Username <span class="text-danger h4">*</span></label>
+                                        {{-- <div class="form-group">
+
                                             <input type="text" name="social_username" id="social_username" placeholder="Enter Username" class="form-control">
+                                        </div> --}}
+                                        <label for="social_username">Username <span class="text-danger h4">*</span></label>
+                                        <div class="input-group m-b-sm">
+                                            <span class="input-group-addon master_url">https://example.com/</span>
+                                            <input type="text" class="form-control" name="social_username" id="social_username" placeholder="Enter Username">
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center">
@@ -53,11 +58,20 @@
 @endsection
 @section('footer_js')
 <script>
-    // $('#percentage').keyup(function() {
-    //     $('#percentage_label').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-"));
-    // });
-    // var slider = document.getElementById("myRange");
-    // var output = document.getElementById("demo");
-    // output.innerHTML = slider.value;
+    $('.social_id').change(function(){
+            var social_Id = $(this).val();
+            if(social_Id){
+                $.ajax({
+                type: "GET",
+                url: "{{ url('get/master-url') }}/"+social_Id,
+                success:function(res){
+                    if(res){
+                        $('.master_url').html(res);
+                    }
+                }
+                });
+            }
+
+        });
 </script>
 @endsection
