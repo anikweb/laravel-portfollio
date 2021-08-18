@@ -60,6 +60,7 @@ Route::get('add-social',[SocialController::class,'SocialAdd'])->middleware(['aut
 Route::post('post-social',[SocialController::class,'SocialPost'])->middleware(['auth'])->name('SocialPost');
 Route::get('edit-social/{id}',[SocialController::class,'socialEdit'])->middleware(['auth'])->name('socialEdit');
 Route::post('update-social',[SocialController::class,'SocialUpdate'])->middleware(['auth'])->name('SocialUpdate');
+Route::post('update-social-priority',[SocialController::class,'socialPriorityUpdate'])->middleware(['auth'])->name('socialPriorityUpdate');
 Route::get('delete-social/{id}',[SocialController::class,'SocialDelete'])->middleware(['auth'])->name('SocialDelete');
 Route::get('get/master-url/{socialId}',[SocialController::class,'SocialId'])->middleware(['auth'])->name('SocialId');
 // social sites

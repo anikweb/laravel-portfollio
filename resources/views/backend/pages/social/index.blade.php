@@ -13,16 +13,16 @@
         {{--  Content Start  --}}
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-white">
+                <div class="panel panel-primary">
                     <div class="panel-heading clearfix">
                         <h4 class="panel-title">Socials</h4>
                     </div>
                     <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table">
+                        <div class="table-responsive ">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center">#</th>
+                                        <th style="text-align: center" width="120px">Priority</th>
                                         <th style="text-align: center">Social Name</th>
                                         <th style="text-align: center">Username</th>
                                         <th style="text-align: center">Last Update</th>
@@ -30,9 +30,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($social as $socialItem)
+                                    @forelse ($social as $socialItem)
                                         <tr>
-                                            <th style="text-align: center" scope="row">{{$social->firstItem()+$loop->index }}</th>
+                                            <td style="text-align: center">
+                                                <span class="priority-span" style="cursor: pointer">{{ $socialItem->priority }}</span>
+                                                <a data-toggle="modal" data-target="#myModal{{ $socialItem->id }}" title="change priority" href="#" class="text-info priority-edit">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
                                             <td style="text-align: center">{{ $socialItem->socialSite->site_name }}</td>
                                             <td style="text-align: center">{{ 'https://'.$socialItem->socialSite->master_url.'/'.$socialItem->url_name }}</td>
                                             <td style="text-align: center">{{ $socialItem->updated_at->diffForHumans() }}</td>
@@ -41,9 +46,35 @@
                                                 <a class="btn btn-info" href="{{ route('socialEdit',$socialItem->id) }}"><span class="icon-note"></span> Edit</a>
                                                 <button type="button" data-id="{{ $socialItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
                                             </td>
-
+                                            {{--  Modal   --}}
+                                            <div class="modal fade" style="margin-top:30px !important" id="myModal{{ $socialItem->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-primary">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">&times;</span></button>
+                                                            <h3 class="modal-title" id="myModalLabel">Change Priority</h3>
+                                                        </div>
+                                                        <form action="{{ route('socialPriorityUpdate') }}" method="post">
+                                                            @csrf
+                                                            <div class="modal-body">
+                                                                <input type="hidden"  value="{{ $socialItem->id }}" name="social_id">
+                                                                <label for="social_priority">{{ $socialItem->socialSite->site_name }}</label>
+                                                                <input type="number" id="social_priority" value="{{ $socialItem->priority }}" name="social_priority" class="form-control">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success">Save changes</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr class="text-center">
+                                            <td colspan="5" class="h4">No data to show.</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             <div class="">
@@ -59,6 +90,22 @@
         {{--  Content End  --}}
     </div><!-- Main Wrapper -->
 </div><!-- Page Inner -->
+@endsection
+@section('inline_css')
+    <style>
+        @media only screen and (min-width: 900px) {
+            .priority-edit{
+                display: none;
+            }
+            .priority-span:hover + .priority-edit{
+                display: inline-block;
+            }
+            .priority-edit:hover{
+                display: inline-block;
+            }
+        }
+
+    </style>
 @endsection
 @section('footer_js')
 <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

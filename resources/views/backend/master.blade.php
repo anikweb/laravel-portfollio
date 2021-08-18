@@ -3,7 +3,7 @@
     <head>
         <!-- Title -->
         <title>
-            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @endif | {{ siteinfo()->title }}</title>
+            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @elseif(Route::is('socialEdit')) Edit Social @endif | {{ siteinfo()->title }}</title>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Admin Dashboard Template" />
@@ -29,7 +29,7 @@
         <link href="{{ asset('backend/css/layers/dark-layer.css') }}" class="theme-color" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" type="text/css"/>
         <link rel="icon" href="{{ asset('front/images/site-icon/'.siteInfo()->icon) }}">
-
+        @yield('inline_css')
         <script src="{{ asset('backend/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -358,14 +358,14 @@
                                     </li>
                                 </ul>
                         </li>
-                        <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')||Route::is('SocialSiteView')||Route::is('SocialSiteEdit')||Route::is('SocialSiteAdd')) active open @endif">
+                        <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')||Route::is('SocialSiteView')||Route::is('SocialSiteEdit')||Route::is('SocialSiteAdd')||Route::is('socialEdit')) active open @endif">
                             <a href="#" class="waves-effect waves-button" target="_blank">
                                 <span class="menu-icon  icon-support"></span>
                                 <p>Socials</p>
                                 <span class="arrow"></span>
                             </a>
                                 <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                    <li class="@if(Route::is('SocialView') || Route::is('SocialEdit')) active @endif">
+                                    <li class="@if(Route::is('SocialView') || Route::is('SocialEdit')||Route::is('socialEdit')) active @endif">
                                         <a href="{{  route('SocialView') }}" class="waves-effect waves-button">
                                             <span class="icon-eye"></span>
                                             <p> View Socials</p>

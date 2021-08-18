@@ -19,7 +19,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">#</th>
@@ -31,7 +31,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($social_sites as $social_site)
+                                    @forelse ($social_sites as $social_site)
                                         <tr>
                                             <th style="text-align: center" scope="row">{{$social_sites->firstItem()+$loop->index }}</th>
                                             <td style="text-align: center">{{ $social_site->site_name }}</td>
@@ -47,7 +47,11 @@
                                             </td>
 
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr class="text-center">
+                                            <td colspan="6" class="h4">No data to show</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             <div class="">

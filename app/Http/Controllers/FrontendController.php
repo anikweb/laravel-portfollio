@@ -16,7 +16,7 @@ class FrontendController extends Controller
             'about' =>About::first(),
             'testimonial'=>Testimonial::latest()->get(),
             'skills' =>Skill::orderBy('id','desc')->get(),
-            'socials' =>Social::latest()->get(),
+            'socials' =>Social::orderBy('priority','asc')->get(),
         ]);
     }
 }

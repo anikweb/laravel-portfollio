@@ -17,12 +17,13 @@ class SocialController extends Controller
         $social = new Social;
         $social->social_id = $request->social_id;
         $social->url_name = $request->social_username;
+        $social->priority = $social->max('priority') + 1;
         $social->save();
         return redirect()->route('SocialView')->with('success',$social->socialSite->site_name.' Added.');
     }
     public function SocialView(){
         return view('backend.pages.social.index',[
-            'social' =>Social::latest()->paginate(10),
+            'social' =>Social::orderBy('priority','asc')->paginate(10),
         ]);
     }
     public function SocialEdit($id){
@@ -91,4 +92,11 @@ class SocialController extends Controller
         $getSocialUrl = SocialSites::findOrFail($socialId);
         return response()->json('https://'.$getSocialUrl->master_url.'/');
     }
+    public function socialPriorityUpdate(Request $request){
+        $social = Social::findOrFail($request->social_id);
+        $social->priority = $request->social_priority;
+        $social->save();
+        return back()->with('success','Priority Changed');
+    }
+
 }
