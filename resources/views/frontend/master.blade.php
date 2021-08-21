@@ -50,13 +50,14 @@ https://templatemo.com/tm-528-elegance
                             <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
                             <div class="nav-box navbar-collapse">
                                 <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                    <li data-menuanchor="home" class="active"><a href="#home">Home</a></li>
-                                    <li data-menuanchor="about"><a href="#about">About Me</a></li>
-                                    <li data-menuanchor="services"><a href="#services">Services</a></li>
-                                    <li data-menuanchor="skill"><a href="#skill">My Skills</a></li>
-                                    <li data-menuanchor="works"><a href="#works">My Work</a></li>
-                                    <li data-menuanchor="tesimonials"><a href="#tesimonials">Testimonials</a></li>
-                                    <li data-menuanchor="contact"><a href="#contact">Contact Me</a></li>
+                                    <li data-menuanchor="home" class="active"><a href="#home"><i class="fa fa-home"></i> Home</a></li>
+                                    <li data-menuanchor="about"><a href="#about"><i class="fa fa-user" aria-hidden="true"></i> About Me</a></li>
+                                    <li data-menuanchor="services"><a href="#services"><i class="fa fa-building-o" aria-hidden="true"></i> Services</a></li>
+                                    <li data-menuanchor="skill"><a href="#skill"><i class="fa fa-suitcase" aria-hidden="true"></i> My Skills</a></li>
+                                    <li data-menuanchor="portfolios"><a href="#portfolios"><i class="fa fa-support" aria-hidden="true"></i> Portfolios</a></li>
+                                    <li data-menuanchor="tesimonials"><a href="#tesimonials"><i class="fa fa-comment-o" aria-hidden="true"></i> Testimonials</a></li>
+                                    <li data-menuanchor="contact"><a href="#contact"><i class="fa fa-phone"></i> Contact Me</a></li>
+                                    <li><a target="_blank" href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Sign In</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -93,7 +94,7 @@ https://templatemo.com/tm-528-elegance
                                     <div class="col-md-6">
                                         <div class="about-contentbox">
                                             <div class="animate" data-animate="fadeInUp">
-                                                <span>About Me</span>
+                                                <span style="font-size:18px !important;">About Me</span>
                                                 <h2>Who am i?</h2>
                                                 <p>{{ $about->about }}</p>
                                             </div>
@@ -136,7 +137,7 @@ https://templatemo.com/tm-528-elegance
                     <div class="row justify-content-center">
                         <div class="col-md-8 wide-col-laptop">
                             <div class="title-block animate" data-animate="fadeInUp">
-                                <span>Services</span>
+                                <span style="font-size:18px !important;">Services</span>
                                 <h2>What I Do?</h2>
                             </div>
                             <div class="services-section">
@@ -209,7 +210,7 @@ https://templatemo.com/tm-528-elegance
                     <div class="row justify-content-center">
                         <div class="col-md-7 wide-col-laptop">
                             <div class="title-block animate" data-animate="fadeInUp">
-                                <span>My Skills</span>
+                                <span style="font-size:18px !important;">My Skills</span>
                                 <h2>What i’m good?</h2>
                             </div>
                             <div class="skills-row animate" data-animate="fadeInDown">
@@ -233,115 +234,32 @@ https://templatemo.com/tm-528-elegance
                 </div>
             </div>
 
-            <div class="section animated-row" data-section="works">
+            <div class="section animated-row" data-section="portfolios">
                 <div class="section-inner">
                     <div class="row justify-content-center">
                         <div class="col-md-8 wide-col-laptop">
                             <div class="title-block animate" data-animate="fadeInUp">
-                                <span>My Work</span>
-                                <h2>what i’ve done?</h2>
+                                <span style="font-size:18px !important;">Latest Work</span>
+                                <h2>Portfolios</h2>
                             </div>
                             <div class="gallery-section">
                                 <div class="gallery-list owl-carousel">
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-1.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap CSS templates.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-2.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap themes.</p>
+                                    @foreach ($portfolios as $portfolio)
+                                        <div class="item animate" data-animate="fadeInUp">
+                                            <div class="portfolio-item">
+                                                <div class="thumb">
+                                                    <img src="{{ asset('front/images/item-1.jpg') }}" alt="{{ $portfolio->title }}">
+                                                </div>
+                                                <a href="#">
+                                                    <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                    <p class="text-center text-muted">- Click for more details -</p>
+                                                        <h4>{{ $portfolio->title }}</h4>
+                                                        <p>{{ $portfolio->summary }}</p>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap layouts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-1.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap templates.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-2.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download Bootstrap CSS templates.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap templates.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-1.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap templates.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-2.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap templates.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('front/images/item-3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>templatemo is the best</h4>
-                                                <p>Please tell your friends about it. Templatemo is the best website to download free Bootstrap templates.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -354,7 +272,7 @@ https://templatemo.com/tm-528-elegance
                     <div class="row justify-content-center">
                         <div class="col-md-8 wide-col-laptop">
                             <div class="title-block animate" data-animate="fadeInUp">
-                                <span>TESTIMONIALS</span>
+                                <span style="font-size:18px !important;">TESTIMONIALS</span>
                                 <h2>what THEY SAY?</h2>
                             </div>
                             <div class="col-md-8 offset-md-2">
@@ -390,7 +308,7 @@ https://templatemo.com/tm-528-elegance
                     <div class="row justify-content-center">
                         <div class="col-md-7 wide-col-laptop">
                             <div class="title-block animate" data-animate="fadeInUp">
-                                <span>Contact</span>
+                                <span style="font-size:18px !important;">Contact</span>
                                 <h2>Get In Touch!</h2>
                             </div>
                             <div class="contact-section">

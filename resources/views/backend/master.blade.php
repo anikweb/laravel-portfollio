@@ -22,6 +22,7 @@
         <link href="{{ asset('backend/plugins/3d-bold-navigation/css/style.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/plugins/slidepushmenus/css/component.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/plugins/weather-icons-master/css/weather-icons.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/plugins/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css"/>
 
         <!-- Theme Styles -->
@@ -358,6 +359,33 @@
                                     </li>
                                 </ul>
                         </li>
+                        <li class="droplink">
+                            <a href="#" class="waves-effect waves-button" target="_blank">
+                                <span class="menu-icon  icon-support"></span>
+                                <p>Portfolios</p>
+                                <span class="arrow"></span>
+                            </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    <li class="">
+                                        <a href="{{ route('PortfolioView') }}" class="waves-effect waves-button">
+                                            <span class="icon-eye"></span>
+                                            <p> View Portfolios</p>
+                                        </a>
+                                    </li>
+                                    <li class="#">
+                                        <a href="{{ route('PortfolioAdd') }}" class="waves-effect waves-button">
+                                            <span class="icon-plus"></span>
+                                            <p>Add Portfolios</p>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#" class="waves-effect waves-button">
+                                            <span class="icon-plus"></span>
+                                            <p>Trash</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
                         <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')||Route::is('SocialSiteView')||Route::is('SocialSiteEdit')||Route::is('SocialSiteAdd')||Route::is('socialEdit')) active open @endif">
                             <a href="#" class="waves-effect waves-button" target="_blank">
                                 <span class="menu-icon  icon-support"></span>
@@ -464,6 +492,7 @@
         <script src="{{ asset('backend/plugins/flot/jquery.flot.tooltip.min.js') }}"></script>
         <script src="{{ asset('backend/plugins/curvedlines/curvedLines.js') }}"></script>
         <script src="{{ asset('backend/plugins/chartjs/Chart.bundle.min.js') }}"></script>
+        <script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
         <script src="{{ asset('backend/js/meteor.min.js') }}"></script>
         @if (session('sessionLogin'))
             <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>

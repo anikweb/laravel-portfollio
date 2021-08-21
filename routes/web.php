@@ -5,6 +5,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\SiteSettingsControllers;
 use App\Http\Controllers\AboutControllers;
+use App\Http\Controllers\PortfoliosController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TestimonialControllers;
@@ -70,4 +71,8 @@ Route::get('delete-social-site/{id}',[SocialController::class,'SocialSiteDelete'
 Route::post('post-social-site',[SocialController::class,'SocialSitePost'])->middleware(['auth'])->name('SocialSitePost');
 Route::get('edit-social-site/{id}',[SocialController::class,'SocialSiteEdit'])->middleware(['auth'])->name('SocialSiteEdit');
 Route::post('update-social-site',[SocialController::class,'SocialSiteUpdate'])->middleware(['auth'])->name('SocialSiteUpdate');
+// Portfolios
+Route::get('dashboard/portfolios',[PortfoliosController::class,'PortfolioView'])->middleware(['auth'])->name('PortfolioView');
+Route::get('dashboard/portfolios/add-portfolio',[PortfoliosController::class,'PortfolioAdd'])->middleware(['auth'])->name('PortfolioAdd');
+
 require __DIR__.'/auth.php';
