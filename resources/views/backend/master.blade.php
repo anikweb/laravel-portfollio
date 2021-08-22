@@ -3,13 +3,12 @@
     <head>
         <!-- Title -->
         <title>
-            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @elseif(Route::is('socialEdit')) Edit Social @endif | {{ siteinfo()->title }}</title>
+            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @elseif(Route::is('socialEdit')) Edit Social @elseif(Route::is('PortfolioView')) Portfolios @elseif(Route::is('PortfolioEdit')) Edit Portfolio @elseif(Route::is('PortfolioAdd')) Add Portfolio @elseif(Route::is('PortfolioDetails')) Portfolio Details @endif | {{ siteinfo()->title }}</title>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Admin Dashboard Template" />
         <meta name="keywords" content="admin,dashboard" />
         <meta name="author" content="stacks" />
-
         <!-- Styles -->
         <link href="{{ asset('backend/plugins/pace-master/themes/blue/pace-theme-flash.css') }}" rel="stylesheet"/>
         <link href="{{ asset('backend/plugins/uniform/css/default.css') }}" rel="stylesheet"/>
@@ -22,14 +21,15 @@
         <link href="{{ asset('backend/plugins/3d-bold-navigation/css/style.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/plugins/slidepushmenus/css/component.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/plugins/weather-icons-master/css/weather-icons.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('backend/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/plugins/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css"/>
-
         <!-- Theme Styles -->
         <link href="{{ asset('backend/css/meteor.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/css/layers/dark-layer.css') }}" class="theme-color" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" type="text/css"/>
+        {{-- Favicon  --}}
         <link rel="icon" href="{{ asset('front/images/site-icon/'.siteInfo()->icon) }}">
+
         @yield('inline_css')
         <script src="{{ asset('backend/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
 
@@ -350,29 +350,29 @@
                         </li>
                         <li class="droplink @if(Route::is('skillView')||Route::is('skillAdd')||Route::is('skillEdit')) open active @endif">
                             <a href="#" class="waves-effect waves-button" target="_blank"><span class="menu-icon  icon-support"></span><p>Skills</p><span class="arrow"></span></a>
-                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                    <li class="@if(Route::is('skillView')||Route::is('skillEdit'))active @endif">
-                                        <a href="{{ route('skillView') }}" class="waves-effect waves-button"> <span class="icon-eye"></span> View Skills</a>
-                                    </li>
-                                    <li class="@if(Route::is('skillAdd')) active @endif">
-                                        <a href="{{ route('skillAdd') }}" class="waves-effect waves-button"> <span class="icon-plus"></span> Add Skills</a>
-                                    </li>
-                                </ul>
+                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                <li class="@if(Route::is('skillView')||Route::is('skillEdit'))active @endif">
+                                    <a href="{{ route('skillView') }}" class="waves-effect waves-button"> <span class="icon-eye"></span> View Skills</a>
+                                </li>
+                                <li class="@if(Route::is('skillAdd')) active @endif">
+                                    <a href="{{ route('skillAdd') }}" class="waves-effect waves-button"> <span class="icon-plus"></span> Add Skills</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="droplink">
+                        <li class="droplink @if(Route::is('PortfolioAdd')||Route::is('PortfolioEdit')||Route::is('PortfolioView')||Route::is('PortfolioDetails')) open active @endif">
                             <a href="#" class="waves-effect waves-button" target="_blank">
                                 <span class="menu-icon  icon-support"></span>
                                 <p>Portfolios</p>
                                 <span class="arrow"></span>
                             </a>
                                 <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                    <li class="">
+                                    <li class="@if(Route::is('PortfolioView')||Route::is('PortfolioEdit')||Route::is('PortfolioDetails')) active @endif">
                                         <a href="{{ route('PortfolioView') }}" class="waves-effect waves-button">
                                             <span class="icon-eye"></span>
                                             <p> View Portfolios</p>
                                         </a>
                                     </li>
-                                    <li class="#">
+                                    <li class="@if(Route::is('PortfolioAdd')) active @endif">
                                         <a href="{{ route('PortfolioAdd') }}" class="waves-effect waves-button">
                                             <span class="icon-plus"></span>
                                             <p>Add Portfolios</p>
@@ -380,7 +380,7 @@
                                     </li>
                                     <li class="">
                                         <a href="#" class="waves-effect waves-button">
-                                            <span class="icon-plus"></span>
+                                            <span class="icon-trash"></span>
                                             <p>Trash</p>
                                         </a>
                                     </li>
@@ -492,7 +492,9 @@
         <script src="{{ asset('backend/plugins/flot/jquery.flot.tooltip.min.js') }}"></script>
         <script src="{{ asset('backend/plugins/curvedlines/curvedLines.js') }}"></script>
         <script src="{{ asset('backend/plugins/chartjs/Chart.bundle.min.js') }}"></script>
-        <script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+        <script src="{{ asset('backend/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
+        {{-- <script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script> --}}
+        {{-- <script src="{{ asset }}"></script> --}}
         <script src="{{ asset('backend/js/meteor.min.js') }}"></script>
         @if (session('sessionLogin'))
             <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>

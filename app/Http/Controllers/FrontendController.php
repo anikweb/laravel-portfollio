@@ -12,13 +12,18 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    function  frontend(){
-        return view('frontend.master',[
+    public function  frontend(){
+        return view('frontend.main',[
             'about' =>About::first(),
             'testimonial'=>Testimonial::latest()->get(),
             'skills' =>Skill::orderBy('id','desc')->get(),
             'socials' =>Social::orderBy('priority','asc')->get(),
             'portfolios'=>Portfolios::latest()->limit(5)->get(),
+        ]);
+    }
+    public function frontendPort($slug){
+        return view('frontend.portfolio_details',[
+            'socials' =>Social::all(),
         ]);
     }
 }

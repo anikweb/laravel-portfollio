@@ -24,6 +24,7 @@
                                     <tr>
                                         <th style="text-align: center">#</th>
                                         <th style="text-align: center">Title</th>
+                                        <th style="text-align: center">Type</th>
                                         <th style="text-align: center">Summary</th>
                                         <th style="text-align: center">Thumbnail</th>
                                         <th style="text-align: center">Last Update</th>
@@ -33,15 +34,18 @@
                                 <tbody>
                                     @forelse ($portfolios as $portfolio)
                                         <tr>
-                                            <td style="text-align: center">1</td>
+                                            <td style="text-align: center">{{ $portfolios->firstItem()+$loop->index }}</td>
                                             <td style="text-align: center">{{ $portfolio->title }}</td>
+                                            <td style="text-align: center">{{ $portfolio->type }}</td>
                                             <td style="text-align: center">{{ $portfolio->summary }}</td>
-                                            <td style="text-align: center">{{ $portfolio->thumbnail }}</td>
+                                            <td style="text-align: center">
+                                                <img width="120px" src="{{ asset('image/portfolios').'/'.$portfolio->created_at->format('Y/m/').$portfolio->id.'/'.$portfolio->thumbnail }}" alt="{{ $portfolio->title }}">
+                                            </td>
                                             <td style="text-align: center">{{ $portfolio->created_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
-                                                <a href="" class="btn btn-success"><i class="fa fa-eye"></i> Details</a>
-                                                <a href="" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
-                                                <a href="" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="{{ route('PortfolioDetails',$portfolio->slug) }}" class="btn btn-success"><i class="fa fa-eye"></i> Details</a>
+                                                <a href="{{ route('PortfolioEdit',$portfolio->slug) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+                                                <a href="{{ route('PortfolioDelete',$portfolio->slug) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                                             </td>
                                         </tr>
                                     @empty
@@ -51,9 +55,6 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div class="">
-                            {{-- {{ $social->links() }} --}}
-                            </div>
                         </div>
                     </div>
                 </div>

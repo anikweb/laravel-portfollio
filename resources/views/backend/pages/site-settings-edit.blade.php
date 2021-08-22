@@ -52,7 +52,6 @@
                                                 <source src="{{ asset('front/video/background-video/'.siteInfo()->backgroundVideo) }}" type="video/mp4" >
                                             </video>
                                             <span class="text-danger"> <span class="icon-ban"></span> Sound will muted in frontend</span>
-
                                         </div>
                                     </div>
                                 @endif

@@ -31,16 +31,18 @@ use App\Http\Controllers\TestimonialControllers;
 
 // Frontend
 Route::get('/',[FrontendController::class, 'frontend'])->name('frontend');
+// portfolio
+Route::get('portfolio/{slug}',[FrontendController::class, 'frontendPort'])->name('frontendPort');
 // Dashboard
 Route::get('dashboard',[BackendController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 //site settings
 Route::get('site-settings',[SiteSettingsControllers::class, 'siteSettings'])->middleware(['auth'])->name('siteSettings');
-Route::get('edit-site-settings/{slug}',[SiteSettingsControllers::class, 'siteSettingsEdit'])->middleware(['auth'])->name('siteSettingsEdit');
-Route::post('update-site-settings',[SiteSettingsControllers::class, 'siteSettingsUpdate'])->middleware(['auth'])->name('siteSettingsUpdate');
+Route::get('dashboard/site-settings/edit-site-settings/{slug}',[SiteSettingsControllers::class, 'siteSettingsEdit'])->middleware(['auth'])->name('siteSettingsEdit');
+Route::post('dashboard/site-settings/update-site-settings',[SiteSettingsControllers::class, 'siteSettingsUpdate'])->middleware(['auth'])->name('siteSettingsUpdate');
 // about
-Route::get('about-settings',[AboutControllers::class, 'aboutSettings'])->middleware(['auth'])->name('aboutSettings');
-Route::get('about-settings-edit/{slug}',[AboutControllers::class, 'aboutSettingsEdit'])->middleware(['auth'])->name('aboutSettingsEdit');
-Route::post('update-about-settings',[AboutControllers::class, 'aboutSettingsUpdate'])->middleware(['auth'])->name('aboutSettingsUpdate');
+Route::get('dashboard/about-settings',[AboutControllers::class, 'aboutSettings'])->middleware(['auth'])->name('aboutSettings');
+Route::get('dashboard/about-settings/about-settings-edit/{slug}',[AboutControllers::class, 'aboutSettingsEdit'])->middleware(['auth'])->name('aboutSettingsEdit');
+Route::post('dashboard/about-settings/update-about-settings',[AboutControllers::class, 'aboutSettingsUpdate'])->middleware(['auth'])->name('aboutSettingsUpdate');
 // Testimonial
 Route::get('testimonial-list',[TestimonialControllers::class, 'testimonialView'])->middleware(['auth'])->name('testimonialView');
 Route::get('add-testimonial',[TestimonialControllers::class, 'testimonialAdd'])->middleware(['auth'])->name('testimonialAdd');
@@ -73,6 +75,11 @@ Route::get('edit-social-site/{id}',[SocialController::class,'SocialSiteEdit'])->
 Route::post('update-social-site',[SocialController::class,'SocialSiteUpdate'])->middleware(['auth'])->name('SocialSiteUpdate');
 // Portfolios
 Route::get('dashboard/portfolios',[PortfoliosController::class,'PortfolioView'])->middleware(['auth'])->name('PortfolioView');
+Route::get('dashboard/portfolios/{slug}/details',[PortfoliosController::class,'PortfolioDetails'])->middleware(['auth'])->name('PortfolioDetails');
 Route::get('dashboard/portfolios/add-portfolio',[PortfoliosController::class,'PortfolioAdd'])->middleware(['auth'])->name('PortfolioAdd');
+Route::post('dashboard/portfolios/post-portfolio',[PortfoliosController::class,'PortfolioPost'])->middleware(['auth'])->name('PortfolioPost');
+Route::get('dashboard/portfolios/{slug}/edit-portfolio',[PortfoliosController::class,'PortfolioEdit'])->middleware(['auth'])->name('PortfolioEdit');
+Route::post('dashboard/portfolios/update-portfolio',[PortfoliosController::class,'PortfolioUpdate'])->middleware(['auth'])->name('PortfolioUpdate');
+Route::get('dashboard/portfolios/{slug}/delete-portfolio',[PortfoliosController::class,'PortfolioDelete'])->middleware(['auth'])->name('PortfolioDelete');
 
 require __DIR__.'/auth.php';
