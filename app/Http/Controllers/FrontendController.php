@@ -24,6 +24,8 @@ class FrontendController extends Controller
     public function frontendPort($slug){
         return view('frontend.portfolio_details',[
             'socials' =>Social::all(),
+            'portfolio' => Portfolios::where('slug',$slug)->first(),
+
         ]);
     }
 }

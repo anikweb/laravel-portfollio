@@ -43,10 +43,6 @@
                                         <td style="text-align: center">{{ $portfolio->description }}</td>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center">Description</th>
-                                        <td style="text-align: center">{{ $portfolio->description }}</td>
-                                    </tr>
-                                    <tr>
                                         <th style="text-align: center">Using Technology</th>
                                         <td style="text-align: center">{{ $portfolio->using_technology }}</td>
                                     </tr>

@@ -22,7 +22,7 @@ class PortfoliosController extends Controller
         $request->validate([
             'title' => 'required|unique:portfolios',
             'summary' => 'required|max:300',
-            'description' => 'required|max:500',
+            'description' => 'required|max:800',
             'using_technology' => 'required',
             'type' => 'required',
             'thumbnail' => 'required|mimes:jpg,png,svg,webp',
@@ -66,7 +66,7 @@ class PortfoliosController extends Controller
         $request->validate([
             'title' => 'required|unique:portfolios,title,'.$portfolio->id,
             'summary' => 'required|max:300',
-            'description' => 'required|max:500',
+            'description' => 'required|max:800',
             'using_technology' => 'required',
             'type' => 'required',
         ]);
