@@ -73,7 +73,7 @@
 }
 @media only screen and (max-width: 1199px) {
 	#fp-nav.fp-right {
-		r    ight:5px;
+		right:5px;
 	}
 	.welcome-title:before {
 		margin: 20px auto 15px;
@@ -130,7 +130,10 @@
 	.menu-trigger {
 		margin:0;
 	}
-
+    .title-md{
+        font-size: 20px;
+    }
+    
 }
 @media only screen and (max-width: 991px) {
 	.welcome-box {
@@ -195,7 +198,9 @@
 	.contact-row {
 		padding: 42px 45px;
 	}
-
+    .portfolio-margin-top-md{
+        margin-top: 125px;
+    }
 }
 @media only screen and (max-width: 767px) {
 	#header {

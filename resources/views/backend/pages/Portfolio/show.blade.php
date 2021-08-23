@@ -23,35 +23,42 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center">Title</th>
+                                        <td style="text-align: center; width:20%;"><strong>Title</strong></td>
                                         <td style="text-align: center">{{ $portfolio->title }}</td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align: center;"><span class="thumb"> <strong>Thumbnail</strong></span></td>
+                                        <td style="text-align: center;" width="30px"><span class="thumb"><strong>Thumbnail</strong></span></td>
                                         <td style="text-align: center">
                                             <img width="120px" src="{{ asset('image/portfolios').'/'.$portfolio->created_at->format('Y/m/').$portfolio->id.'/'.$portfolio->thumbnail }}" alt="{{ $portfolio->title }}">
                                         </td>
                                     </tr>
-                                    <th style="text-align: center">Type</th>
+                                        <td style="text-align: center" width="30px"><strong>Type</strong></td>
                                         <td style="text-align: center">{{ $portfolio->type }}</td>
                                     <tr>
-                                        <th style="text-align: center">Summary</th>
+                                        <td style="text-align: center" width="30px"><strong>Summary</strong></td>
                                         <td style="text-align: center">{{ $portfolio->summary }}</td>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center">Description</th>
+                                        <td style="text-align: center" width="30px"><strong>Description</strong></td>
                                         <td style="text-align: center">{{ $portfolio->description }}</td>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center">Using Technology</th>
-                                        <td style="text-align: center">{{ $portfolio->using_technology }}</td>
+                                        @php
+                                            $technologies = Illuminate\Support\Str::of($portfolio->using_technology)->explode(',');
+                                        @endphp
+                                        <th style="text-align: center" width="30px">Using Technology</th>
+                                        <td style="text-align: center">
+                                            @foreach ($technologies as $technology)
+                                                <span class="bg-info" style="padding: 5px; margin-right: 5px;">{{ $technology }}</span>
+                                            @endforeach
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center">Created at</th>
+                                        <th style="text-align: center" width="30px">Created at</th>
                                         <td style="text-align: center">{{ $portfolio->created_at->format('d-M-Y') }}</td>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center">Last Update</th>
+                                        <th style="text-align: center" width="30px">Last Update</th>
                                         <td style="text-align: center">{{ $portfolio->updated_at->diffForHumans() }}</td>
                                     </tr>
                                 </thead>

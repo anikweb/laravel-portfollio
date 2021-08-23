@@ -245,7 +245,7 @@ https://templatemo.com/tm-528-elegance
 
                                             <div class="item animate" data-animate="fadeInUp">
                                                 <div class="portfolio-item">
-                                                    <a href="{{ route('frontendPort',$portfolio->slug) }}" target="_blank">
+                                                    <a href="{{ route('frontendPort',$portfolio->slug) }}">
                                                         <div class="thumb">
                                                             <img src="{{ asset('image/portfolios').'/'.$portfolio->created_at->format('Y/m/').$portfolio->id.'/'.$portfolio->thumbnail }}" alt="{{ $portfolio->title }}" >
                                                         </div>
