@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Portfolios;
+use App\Models\Service;
 use App\Models\SiteSettings;
 use App\Models\Testimonial;
 use App\Models\Skill;
@@ -19,6 +20,7 @@ class FrontendController extends Controller
             'skills' =>Skill::orderBy('id','desc')->get(),
             'socials' =>Social::orderBy('priority','asc')->get(),
             'portfolios'=>Portfolios::latest()->limit(5)->get(),
+            'services'=>Service::latest()->get(),
         ]);
     }
     public function frontendPort($slug){

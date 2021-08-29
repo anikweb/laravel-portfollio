@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="//fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <title>{{ siteInfo()->title }}</title>
+    <title> @if($portfolio->title) {{ $portfolio->title.' |' }} @endif  {{ siteInfo()->title }}</title>
 <!--
 Elegance Template
 https://templatemo.com/tm-528-elegance

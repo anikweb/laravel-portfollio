@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('content')
-<div class="section animated-row">
+<div class="section animated-row" data-section="portfolios">
     <div class="container">
         <div class="row portfolio-margin-top-md p-3" style="background:#00000073;">
             <div class="col-md-5 pt-3">
@@ -12,6 +12,7 @@
                 <p style="font-size: 21px;text-align: left;margin:0;">Description</p>
                 <hr class="bg-white" style="margin-top:2px">
                 <p class="lead" style="text-align: left;font-size:16px;">{{ $portfolio->description }}</p>
+                <a href="#" class="btn btn-success" style="width: 149px;height: 52px;font-size: 16px;padding: 0;">Live Preview</a>
             </div>
             <div class="col-md-6 pt-3">
                 @php

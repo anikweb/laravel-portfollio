@@ -327,35 +327,94 @@
                 <div class="page-sidebar-inner slimscroll">
                     <ul class="menu accordion-menu">
                         <li class="@if (Route::is('dashboard')) active @endif">
-                            <a href="{{ route('dashboard') }}" class="waves-effect waves-button"><span class="menu-icon icon-home"></span><p>Dashboard</p><span class="active-page"></span></a>
+                            <a href="{{ route('dashboard') }}" class="waves-effect waves-button">
+                                <span class="menu-icon icon-home"></span>
+                                <p>Dashboard</p>
+                                <span class="active-page"></span>
+                            </a>
                         </li>
                         <li>
-                            <a href="profile.html" class="waves-effect waves-button"><span class="menu-icon icon-user"></span><p>Profile</p></a>
+                            <a href="profile.html" class="waves-effect waves-button">
+                                <span class="menu-icon icon-user"></span>
+                                <p>Profile</p>
+                                <span class="active-page"></span
+                            ></a>
                         </li>
                         <li>
-                            <a href="{{ route('frontend') }}" class="waves-effect waves-button" target="_blank"><span class="menu-icon icon-eye"></span><p>View Website</p></a>
+                            <a href="{{ route('frontend') }}" class="waves-effect waves-button" target="_blank">
+                                <span class="menu-icon icon-eye"></span>
+                                <p>View Website</p>
+                            </a>
 
                         </li>
-
                         <li class="droplink @if(Route::is('testimonialView') || Route::is('testimonialAdd')||Route::is('testimonialEdit')) open active @endif">
-                            <a href="#" class="waves-effect waves-button" target="_blank"><span class="menu-icon icon-speech"></span><p>Testimonial</p><span class="arrow"></span></a>
-                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                    <li class="@if(Route::is('testimonialView')||Route::is('testimonialEdit')) active @endif">
-                                        <a href="{{ route('testimonialView') }}" class="waves-effect waves-button "> <span class="icon-eye"></span> View Testimonial</a>
-                                    </li>
-                                    <li class="@if(Route::is('testimonialAdd')) active @endif">
-                                        <a href="{{ route('testimonialAdd') }}" class="waves-effect waves-button"> <span class="icon-plus"></span> Add Testimonial</a>
-                                    </li>
-                                </ul>
+                            <a href="#" class="waves-effect waves-button" target="_blank">
+                                <span class="menu-icon icon-speech"></span>
+                                <p>Testimonial</p>
+                                <span class="arrow"></span>
+                                <span class="active-page"></span>
+                            </a>
+                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                <li class="@if(Route::is('testimonialView')||Route::is('testimonialEdit')) active @endif">
+                                    <a href="{{ route('testimonialView') }}" class="waves-effect waves-button ">
+                                        <span class="icon-eye"></span>
+                                        <p>View Testimonial</p>
+                                    </a>
+                                </li>
+                                <li class="@if(Route::is('testimonialAdd')) active @endif">
+                                    <a href="{{ route('testimonialAdd') }}" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p> Add Testimonial</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="droplink @if(Route::is('skillView')||Route::is('skillAdd')||Route::is('skillEdit')) open active @endif">
-                            <a href="#" class="waves-effect waves-button" target="_blank"><span class="menu-icon  icon-support"></span><p>Skills</p><span class="arrow"></span></a>
+                            <a href="#" class="waves-effect waves-button" target="_blank">
+                                <span class="menu-icon  icon-support"></span>
+                                <p>Skills</p>
+                                <span class="arrow"></span>
+                                <span class="active-page"></span>
+                            </a>
                             <ul class="sub-menu" style="display: none; background:#3a3a3a">
                                 <li class="@if(Route::is('skillView')||Route::is('skillEdit'))active @endif">
-                                    <a href="{{ route('skillView') }}" class="waves-effect waves-button"> <span class="icon-eye"></span> View Skills</a>
+                                    <a href="{{ route('skillView') }}" class="waves-effect waves-button">
+                                        <span class="icon-eye"></span>
+                                        <p>View Skills</p>
+                                    </a>
                                 </li>
                                 <li class="@if(Route::is('skillAdd')) active @endif">
-                                    <a href="{{ route('skillAdd') }}" class="waves-effect waves-button"> <span class="icon-plus"></span> Add Skills</a>
+                                    <a href="{{ route('skillAdd') }}" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p> Add Skills</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="droplink">
+                            <a href="#" class="waves-effect waves-button" target="_blank">
+                                <span class="menu-icon  icon-support"></span>
+                                <p>Services</p>
+                                <span class="arrow"></span><span class="active-page"></span>
+                            </a>
+                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                <li>
+                                    <a href="#" class="waves-effect waves-button">
+                                        <span class="icon-eye"></span>
+                                        <p>View Service</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p>Add Service</p>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="waves-effect waves-button">
+                                        <span class="icon-trash"></span>
+                                        <p>Trash</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -364,66 +423,97 @@
                                 <span class="menu-icon  icon-support"></span>
                                 <p>Portfolios</p>
                                 <span class="arrow"></span>
+                                <span class="active-page"></span>
                             </a>
-                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                    <li class="@if(Route::is('PortfolioView')||Route::is('PortfolioEdit')||Route::is('PortfolioDetails')) active @endif">
-                                        <a href="{{ route('PortfolioView') }}" class="waves-effect waves-button">
-                                            <span class="icon-eye"></span>
-                                            <p> View Portfolios</p>
-                                        </a>
-                                    </li>
-                                    <li class="@if(Route::is('PortfolioAdd')) active @endif">
-                                        <a href="{{ route('PortfolioAdd') }}" class="waves-effect waves-button">
-                                            <span class="icon-plus"></span>
-                                            <p>Add Portfolios</p>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#" class="waves-effect waves-button">
-                                            <span class="icon-trash"></span>
-                                            <p>Trash</p>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                <li class="@if(Route::is('PortfolioView')||Route::is('PortfolioEdit')||Route::is('PortfolioDetails')) active @endif">
+                                    <a href="{{ route('PortfolioView') }}" class="waves-effect waves-button">
+                                        <span class="icon-eye"></span>
+                                        <p> View Portfolios</p>
+                                    </a>
+                                </li>
+                                <li class="@if(Route::is('PortfolioAdd')) active @endif">
+                                    <a href="{{ route('PortfolioAdd') }}" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p>Add Portfolios</p>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#" class="waves-effect waves-button">
+                                        <span class="icon-trash"></span>
+                                        <p>Trash</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')||Route::is('SocialSiteView')||Route::is('SocialSiteEdit')||Route::is('SocialSiteAdd')||Route::is('socialEdit')) active open @endif">
                             <a href="#" class="waves-effect waves-button" target="_blank">
                                 <span class="menu-icon  icon-support"></span>
                                 <p>Socials</p>
                                 <span class="arrow"></span>
+                                <span class="active-page"></span>
                             </a>
-                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                    <li class="@if(Route::is('SocialView') || Route::is('SocialEdit')||Route::is('socialEdit')) active @endif">
-                                        <a href="{{  route('SocialView') }}" class="waves-effect waves-button">
-                                            <span class="icon-eye"></span>
-                                            <p> View Socials</p>
-                                        </a>
-                                    </li>
-                                    <li class="@if(Route::is('SocialAdd')) active @endif">
-                                        <a href="{{ route('SocialAdd') }}" class="waves-effect waves-button">
-                                            <span class="icon-plus"></span>
-                                            <p>Add Social</p>
-                                        </a>
-                                    </li>
-                                    <li class="@if(Route::is('SocialSiteView')||Route::is('SocialSiteEdit')) active @endif">
-                                        <a href="{{ route('SocialSiteView') }}" class="waves-effect waves-button">
-                                            <span class="icon-eye"></span>
-                                            <p>View Social Site</p>
-                                        </a>
-                                    </li>
-                                    <li class="@if(Route::is('SocialSiteAdd')) active @endif">
-                                        <a href="{{ route('SocialSiteAdd') }}" class="waves-effect waves-button">
-                                            <span class="icon-plus"></span>
-                                            <p>Add Social Site</p>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                <li class="@if(Route::is('SocialView') || Route::is('SocialEdit')||Route::is('socialEdit')) active @endif">
+                                    <a href="{{  route('SocialView') }}" class="waves-effect waves-button">
+                                        <span class="icon-eye"></span>
+                                        <p> View Socials</p>
+                                    </a>
+                                </li>
+                                <li class="@if(Route::is('SocialAdd')) active @endif">
+                                    <a href="{{ route('SocialAdd') }}" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p>Add Social</p>
+                                    </a>
+                                </li>
+                                <li class="@if(Route::is('SocialSiteView')||Route::is('SocialSiteEdit')) active @endif">
+                                    <a href="{{ route('SocialSiteView') }}" class="waves-effect waves-button">
+                                        <span class="icon-eye"></span>
+                                        <p>View Social Site</p>
+                                    </a>
+                                </li>
+                                <li class="@if(Route::is('SocialSiteAdd')) active @endif">
+                                    <a href="{{ route('SocialSiteAdd') }}" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p>Add Social Site</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="droplink">
+                            <a href="#" class="waves-effect waves-button" target="_blank">
+                                <span class="menu-icon  icon-support"></span>
+                                <p>Role Manager</p>
+                                <span class="arrow"></span>
+                                <span class="active-page"></span>
+                            </a>
+                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                <li class="">
+                                    <a href="{{ route('role.create') }}" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p>Add Role</p>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ route('role.index') }}" class="waves-effect waves-button">
+                                        <span class="icon-eye"></span>
+                                        <p>View Role</p>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ route('assign.user') }}" class="waves-effect waves-button">
+                                        <span class="icon-plus"></span>
+                                        <p>Assign User</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="droplink @if(Route::is('siteSettings')||Route::is('siteSettingsEdit')||Route::is('aboutSettings')||Route::is('aboutSettingsEdit')) open active @endif">
                             <a href="#" class="waves-effect waves-button">
                                 <span class="menu-icon icon-settings"></span>
                                 <p>Settings</p>
                                 <span class="arrow"></span>
+                                <span class="active-page"></span>
                             </a>
                             <ul class="sub-menu" style="display: none; background:#3a3a3a">
                                 <li class="@if(Route::is('siteSettings')||Route::is('siteSettingsEdit')) active @endif">
@@ -434,6 +524,7 @@
                                 </li>
                             </ul>
                         </li>
+
                     </ul>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->

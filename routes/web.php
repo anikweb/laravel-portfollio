@@ -6,6 +6,7 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\SiteSettingsControllers;
 use App\Http\Controllers\AboutControllers;
 use App\Http\Controllers\PortfoliosController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TestimonialControllers;
@@ -81,5 +82,8 @@ Route::post('dashboard/portfolios/post-portfolio',[PortfoliosController::class,'
 Route::get('dashboard/portfolios/{slug}/edit-portfolio',[PortfoliosController::class,'PortfolioEdit'])->middleware(['auth'])->name('PortfolioEdit');
 Route::post('dashboard/portfolios/update-portfolio',[PortfoliosController::class,'PortfolioUpdate'])->middleware(['auth'])->name('PortfolioUpdate');
 Route::get('dashboard/portfolios/{slug}/delete-portfolio',[PortfoliosController::class,'PortfolioDelete'])->middleware(['auth'])->name('PortfolioDelete');
-
+// Roles
+Route::get('dashboard/role/assign/user',[RoleController::class,'assignUser'])->middleware(['auth'])->name('assign.user');
+Route::post('dashboard/role/assign/user/post',[RoleController::class,'assignUserPost'])->middleware(['auth'])->name('assign.user.post');
+Route::resource('role', RoleController::class);
 require __DIR__.'/auth.php';
