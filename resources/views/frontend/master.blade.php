@@ -57,7 +57,11 @@ https://templatemo.com/tm-528-elegance
                                     <li><a href="{{ route('frontend') }}/#portfolios"><i class="fa fa-support" aria-hidden="true"></i> Portfolios</a></li>
                                     <li><a href="{{ route('frontend') }}/#tesimonials"><i class="fa fa-comment-o" aria-hidden="true"></i> Testimonials</a></li>
                                     <li><a href="{{ route('frontend') }}/#contact"><i class="fa fa-phone"></i> Contact Me</a></li>
-                                    <li><a target="_blank" href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                                    @auth
+                                        <li><a target="_blank" href="{{ route('dashboard') }}"><i class="fa fa-sign-in"></i> Dashboard</a></li>
+                                    @else
+                                        <li><a target="_blank" href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                                    @endauth
                                 </ul>
                             </div>
                         </nav>

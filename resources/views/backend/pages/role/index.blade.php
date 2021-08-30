@@ -20,34 +20,24 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered m-t-sm">
                                     <thead class="text-center">
                                         <tr>
                                             <th class="text-center">#</th>
                                             <th class="text-center">Name of Role</th>
-                                            <th class="text-center">Permissions</th>
                                             <th class="text-center">Created</th>
-                                            <th class="text-center">Last Update</th>
                                             <th class="text-center" colspan="3">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         @foreach ($roles as $role)
                                         <tr>
                                             <td>{{ $loop->index+1 }}</td>
                                             <td>{{ $role->name }}</td>
-                                            <td>
-                                                <ol>
-                                                    @foreach ($role->permissions as $permission)
-                                                        <li>{{ Illuminate\Support\Str::title($permission->name) }}</li>
-                                                    @endforeach
-                                                </ol>
-                                            </td>
                                             <td>{{ $role->created_at->format('d-M-Y, h:i A') }}</td>
-                                            <td>{{ $role->created_at->diffForHumans() }}</td>
                                             <td class="text-center">
-                                                <a href="#" class="btn btn-primary"><i class="icon-eye"></i> Details</a>
-                                                <a href="#" class="btn btn-info"><i class="icon-note"></i> Edit</a>
+                                                <a href="{{ route('role.show',$role->id) }}" class="btn btn-primary"><i class="icon-eye"></i> Details</a>
+                                                <a href="{{ route('role.edit',$role->id) }}" class="btn btn-info"><i class="icon-note"></i> Edit</a>
                                                 <a href="#" class="btn btn-danger"><i class="icon-trash"></i> Remove</a>
                                             </td>
                                         </tr>

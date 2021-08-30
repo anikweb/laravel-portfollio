@@ -3,7 +3,7 @@
     <head>
         <!-- Title -->
         <title>
-            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @elseif(Route::is('socialEdit')) Edit Social @elseif(Route::is('PortfolioView')) Portfolios @elseif(Route::is('PortfolioEdit')) Edit Portfolio @elseif(Route::is('PortfolioAdd')) Add Portfolio @elseif(Route::is('PortfolioDetails')) Portfolio Details @endif | {{ siteinfo()->title }}</title>
+            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @elseif(Route::is('socialEdit')) Edit Social @elseif(Route::is('PortfolioView')) Portfolios @elseif(Route::is('PortfolioEdit')) Edit Portfolio @elseif(Route::is('PortfolioAdd')) Add Portfolio @elseif(Route::is('PortfolioDetails')) Portfolio Details @elseif(Route::is('assign.user')) Assign User @elseif(Route::is('user.role.edit')) Edit Assigned User @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Roles @elseif(Route::is('role.show')) Roles Details @elseif(Route::is('role.edit')) Edit Roles @endif | {{ siteinfo()->title }}</title>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Admin Dashboard Template" />
@@ -297,7 +297,7 @@
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="user-name">nick<i class="fa fa-angle-down"></i></span>
+                                        <span class="user-name">{{ Auth::user()->name }}<i class="fa fa-angle-down"></i></span>
                                         <img class="img-circle avatar" src="{{ asset('backend/images/avatar1.png') }}" width="40" height="40" alt="">
                                     </a>
                                     <ul class="dropdown-menu dropdown-list" role="menu">
@@ -480,7 +480,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="droplink">
+                        <li class="droplink @if(Route::is('assign.user')||Route::is('user.role.edit')||Route::is('role.index')||Route::is('role.create')||Route::is('role.show')||Route::is('role.edit')) open active @endif">
                             <a href="#" class="waves-effect waves-button" target="_blank">
                                 <span class="menu-icon  icon-support"></span>
                                 <p>Role Manager</p>
@@ -488,19 +488,19 @@
                                 <span class="active-page"></span>
                             </a>
                             <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li class="">
+                                <li class="@if(Route::is('role.create')) active @endif">
                                     <a href="{{ route('role.create') }}" class="waves-effect waves-button">
                                         <span class="icon-plus"></span>
                                         <p>Add Role</p>
                                     </a>
                                 </li>
-                                <li class="">
+                                <li class="@if(Route::is('role.index')||Route::is('role.show')||Route::is('role.edit')) active @endif">
                                     <a href="{{ route('role.index') }}" class="waves-effect waves-button">
                                         <span class="icon-eye"></span>
                                         <p>View Role</p>
                                     </a>
                                 </li>
-                                <li class="">
+                                <li class="@if(Route::is('assign.user')||Route::is('user.role.edit')) active @endif">
                                     <a href="{{ route('assign.user') }}" class="waves-effect waves-button">
                                         <span class="icon-plus"></span>
                                         <p>Assign User</p>
@@ -587,9 +587,14 @@
         {{-- <script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script> --}}
         {{-- <script src="{{ asset }}"></script> --}}
         <script src="{{ asset('backend/js/meteor.min.js') }}"></script>
-        @if (session('sessionLogin'))
+        {{--  @if (session('sessionLogin'))
             <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
-        @endif
+        @endif  --}}
+        <script>
+            @if(session('sessionLogin'))
+                toastr['success']("{{ session('sessionLogin') }}")
+            @endif
+        </script>
         @yield('footer_js')
     </body>
 </html>

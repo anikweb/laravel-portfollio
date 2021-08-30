@@ -24,16 +24,22 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="role_name">Name of Role <span class="text-danger">*</span></label>
-                                        <input type="text" name="role_name" id="role_name" class="form-control">
+                                        <input type="text" name="role_name" value="{{ old('role_name') }}" id="role_name" class="form-control @error('role_name') is-invalid @enderror">
+                                        @error('role_name')
+                                            <div class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="permission">Choose Permission <span class="text-danger">*</span></label>
+                                    @error('permissions[]')
+                                        <div class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         @foreach ($permissions as $permission)
-                                            <input value="{{ $permission->name }}" type="checkbox" name="permissions[]" id="permission{{ $permission->id }}" class="bg-primary">
+                                            <input value="{{ $permission->name }}" type="checkbox" name="permissions[]" id="permission{{ $permission->id }}" class="@error('permissions[]') is-invalid @enderror">
                                             <label for="permission{{ $permission->id }}">{{ Illuminate\Support\Str::title($permission->name) }}</label>
                                         @endforeach
                                     </div>

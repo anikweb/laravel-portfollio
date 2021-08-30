@@ -2,18 +2,6 @@ $( document ).ready(function() {
 
     // CounterUp Plugin
 
-    setTimeout(function() {
-        toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            showMethod: 'fadeIn',
-            hideMethod: 'fadeOut',
-            timeOut: 5000
-        };
-        toastr.success('Dashboard Login Success', 'Welcome');
-    }, 1800);
-
-
     // First Chart
     var data = {
         labels: ["January", "February", "March", "April", "May", "June", "July"],

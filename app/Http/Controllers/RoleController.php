@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
@@ -28,7 +29,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        // Permission::create(['name'=>'view testimonial']);
+        // Permission::create(['name'=>'customer']);
         // return 'added';
 
         return view('backend.pages.role.create',[
@@ -44,6 +45,12 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'role_name' => 'required|unique:roles,name',
+            'permissions[]' =>'required',
+        ],[
+            'permissions[].required'=>'Permission Required to creating role.'
+        ]);
         $role=Role::create(['name'=>$request->role_name]);
         $role->givePermissionTo($request->permissions);
         return redirect()->route('role.index')->with('success','New Role Created!');
@@ -57,7 +64,9 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('backend.pages.role.show',[
+           'role' => Role::findOrFail($id),
+        ]);
     }
 
     /**
@@ -68,7 +77,11 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        return view('backend.pages.role.edit',[
+            'role' => Role::findOrFail($id),
+            'permissions' => Permission::orderBy('name','asc')->get(),
+        ]);
     }
 
     /**
@@ -80,7 +93,11 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        // return $request->role_name;
+        $role = Role::findOrFail($id);
+        $role->syncPermissions($request->permissions);
+        return back()->with('success',$role->name.' Role Updated.');
     }
 
     /**
@@ -102,9 +119,39 @@ class RoleController extends Controller
     }
     public function assignUserPost(Request $request)
     {
+        $request->validate([
+            'user_id' => 'required',
+            'role_name'=> 'required'
+        ]);
         $user = User::findOrFail($request->user_id);
         $user->assignRole($request->role_name);
-        return back();
+        $rolename = Str::title($request->role_name);
+        return back()->with('success',$user->name.' Assigned as a '.$rolename);
     }
 
+    public function userRoleEdit($id)
+    {
+
+       return view('backend.pages.role.user_role_edit',[
+        'user' => User::findOrFail($id),
+        'roles' => Role::orderBy('name','asc')->get(),
+       ]);
+    }
+    public function userRoleEditPost(Request $request){
+        if($request->current_role || $request->new_role){
+            $user = User::findOrFail($request->user_id);
+            if($request->current_role){
+                foreach ($request->current_role as $current_role) {
+                    $user->removeRole($current_role);
+                }
+            }
+            $user->assignRole();
+            $rolename = Str::title($request->role_name);
+            return redirect()->route('assign.user')->with('success','role updated');
+        }else{
+            return back()->with('fail','You did not change to update.');
+        }
+        // return $request;
+
+    }
 }

@@ -85,5 +85,8 @@ Route::get('dashboard/portfolios/{slug}/delete-portfolio',[PortfoliosController:
 // Roles
 Route::get('dashboard/role/assign/user',[RoleController::class,'assignUser'])->middleware(['auth'])->name('assign.user');
 Route::post('dashboard/role/assign/user/post',[RoleController::class,'assignUserPost'])->middleware(['auth'])->name('assign.user.post');
+Route::get('dashboard/user/role/edit/{id}',[RoleController::class,'userRoleEdit'])->middleware(['auth'])->name('user.role.edit');
+Route::post('dashboard/user/role/edit/post',[RoleController::class,'userRoleEditPost'])->middleware(['auth'])->name('user.role.edit.post');
 Route::resource('role', RoleController::class);
+
 require __DIR__.'/auth.php';

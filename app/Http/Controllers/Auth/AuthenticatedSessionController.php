@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        return redirect()->intended(RouteServiceProvider::HOME)->with('sessionLogin','login');
+        return redirect()->intended(RouteServiceProvider::HOME)->with('sessionLogin','Welcome '.Auth::user()->name.' to your dashboard.');
     }
 
     /**
