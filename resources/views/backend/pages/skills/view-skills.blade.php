@@ -26,7 +26,9 @@
                                         <th style="text-align: center">Name</th>
                                         <th style="text-align: center">Percentage</th>
                                         <th style="text-align: center">Created at</th>
-                                        <th colspan="2" style="text-align: center">Action</th>
+                                        @if (auth()->user()->can('edit skill')||auth()->user()->can('delete skill'))
+                                            <th colspan="2" style="text-align: center">Action</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,12 +38,16 @@
                                             <td style="text-align: center">{{ $skillItem->name }}</td>
                                             <td style="text-align: center">{{ $skillItem->percentage.'%' }}</td>
                                             <td style="text-align: center">{{ $skillItem->created_at->diffForHumans() }}</td>
-                                            <td style="text-align: center">
-                                                <a class="btn btn-info" href="{{ route('skillEdit',$skillItem->id) }}"><span class="icon-note"></span> Edit</a>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <button type="button" data-id="{{ $skillItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
-                                            </td>
+                                            @can('edit skill')
+                                                <td style="text-align: center">
+                                                    <a class="btn btn-info" href="{{ route('skillEdit',$skillItem->id) }}"><span class="icon-note"></span> Edit</a>
+                                                </td>
+                                            @endcan
+                                            @can('delete skill')
+                                                <td style="text-align: center">
+                                                    <button type="button" data-id="{{ $skillItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
+                                                </td>
+                                            @endcan
                                         </tr>
                                     @empty
                                     <td style="text-align: center" colspan="5" class="text-danger">Skills Empty</td>

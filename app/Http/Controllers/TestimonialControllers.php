@@ -11,14 +11,20 @@ use Intervention\Image\Facades\Image;
 class TestimonialControllers extends Controller
 {
     function testimonialView(){
-
-
-        return view('backend.pages.testimonial.view-testimonial',[
-            'testimonial' => Testimonial::latest()->paginate(10),
-        ]);
+        if(auth()->user()->can('view testimonial')){
+            return view('backend.pages.testimonial.view-testimonial',[
+                'testimonial' => Testimonial::latest()->paginate(10),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     function testimonialAdd(){
-        return view('backend.pages.testimonial.add-testimonial');
+        if(auth()->user()->can('add testimonial')){
+            return view('backend.pages.testimonial.add-testimonial');
+        }else{
+            return abort('404');
+        }
     }
     function testimonialUpdate(Request $request){
         // return $request;
@@ -37,17 +43,25 @@ class TestimonialControllers extends Controller
         return redirect()->route('testimonialView')->with('success','Testimonial add success');
     }
     function testimonialDelete($id){
-        $softDelete = Testimonial::findOrFail($id)->delete();
-        if($softDelete){
-            return back()->with('success','Testimonial Deleted.');
+        if(auth()->user()->can('delete testimonial')){
+            $softDelete = Testimonial::findOrFail($id)->delete();
+            if($softDelete){
+                return back()->with('success','Testimonial Deleted.');
+            }else{
+                return back()->with('fail','Testimonial Deleted failed.');
+            }
         }else{
-            return back()->with('fail','Testimonial Deleted failed.');
+            return abort('404');
         }
     }
     function testimonialEdit($id){
-        return view('backend.pages.testimonial.edit-testimonial',[
-            'testimonial'=>Testimonial::findOrFail($id),
-        ]);
+        if(auth()->user()->can('edit testimonial')){
+            return view('backend.pages.testimonial.edit-testimonial',[
+                'testimonial'=>Testimonial::findOrFail($id),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     function testimonialEditUpdate(Request $request){
         // return 'ok';

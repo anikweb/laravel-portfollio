@@ -42,8 +42,12 @@
                                             <td style="text-align: center">{{ $social_site->updated_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
                                                 <a class="btn btn-primary" target="_blank" href="{{ 'https://'.$social_site->master_url }}"><span class="  icon-paper-plane"></span> Visit</a>
-                                                <a class="btn btn-info" href="{{ route('SocialSiteEdit',$social_site->id) }}"><span class="icon-note"></span> Edit</a>
+                                                @can('edit social site')
+                                                    <a class="btn btn-info" href="{{ route('SocialSiteEdit',$social_site->id) }}"><span class="icon-note"></span> Edit</a>
+                                                @endcan
+                                                @can('delete social site')
                                                 <button type="button" data-id="{{ $social_site->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
+                                                @endcan
                                             </td>
 
                                         </tr>

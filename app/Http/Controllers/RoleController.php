@@ -17,9 +17,13 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.role.index',[
-            'roles' =>Role::orderBy('name','asc')->paginate(5),
-        ]);
+        if(auth()->user()->can('role management')){
+            return view('backend.pages.role.index',[
+                'roles' =>Role::orderBy('name','asc')->paginate(5),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
 
     /**
@@ -29,12 +33,20 @@ class RoleController extends Controller
      */
     public function create()
     {
-        // Permission::create(['name'=>'customer']);
-        // return 'added';
 
-        return view('backend.pages.role.create',[
-            'permissions' =>Permission::orderBy('name','asc')->get(),
-        ]);
+        if(auth()->user()->can('role management')){
+            // Permission::create(['name'=>'add social site']);
+            // Permission::create(['name'=>'edit social site']);
+            // Permission::create(['name'=>'delete social site']);
+            // Permission::create(['name'=>'view social site']);
+            // return 'added';
+
+            return view('backend.pages.role.create',[
+                'permissions' =>Permission::orderBy('name','asc')->get(),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
 
     /**
@@ -64,9 +76,13 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        return view('backend.pages.role.show',[
-           'role' => Role::findOrFail($id),
-        ]);
+        if(auth()->user()->can('role management')){
+            return view('backend.pages.role.show',[
+               'role' => Role::findOrFail($id),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
 
     /**
@@ -77,11 +93,14 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-
-        return view('backend.pages.role.edit',[
-            'role' => Role::findOrFail($id),
-            'permissions' => Permission::orderBy('name','asc')->get(),
-        ]);
+        if(auth()->user()->can('role management')){
+            return view('backend.pages.role.edit',[
+                'role' => Role::findOrFail($id),
+                'permissions' => Permission::orderBy('name','asc')->get(),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
 
     /**
@@ -112,13 +131,19 @@ class RoleController extends Controller
     }
     public function assignUser()
     {
-        return view('backend.pages.role.assign_user',[
-            'users' =>User::orderBy('name','asc')->get(),
-            'roles' =>Role::orderBy('name','asc')->get(),
-        ]);
+
+        if(auth()->user()->can('role management')){
+            return view('backend.pages.role.assign_user',[
+                'users' =>User::orderBy('name','asc')->get(),
+                'roles' =>Role::orderBy('name','asc')->get(),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function assignUserPost(Request $request)
     {
+        // return $request;
         $request->validate([
             'user_id' => 'required',
             'role_name'=> 'required'
@@ -131,13 +156,18 @@ class RoleController extends Controller
 
     public function userRoleEdit($id)
     {
+        if(auth()->user()->can('role management')){
+            return view('backend.pages.role.user_role_edit',[
+             'user' => User::findOrFail($id),
+             'roles' => Role::orderBy('name','asc')->get(),
+            ]);
+        }else{
+            return abort('404');
+        }
 
-       return view('backend.pages.role.user_role_edit',[
-        'user' => User::findOrFail($id),
-        'roles' => Role::orderBy('name','asc')->get(),
-       ]);
     }
     public function userRoleEditPost(Request $request){
+        // return $request;
         if($request->current_role || $request->new_role){
             $user = User::findOrFail($request->user_id);
             if($request->current_role){
@@ -145,8 +175,8 @@ class RoleController extends Controller
                     $user->removeRole($current_role);
                 }
             }
-            $user->assignRole();
-            $rolename = Str::title($request->role_name);
+            $user->assignRole($request->new_role);
+            // $rolename = Str::title($request->role_name);
             return redirect()->route('assign.user')->with('success','role updated');
         }else{
             return back()->with('fail','You did not change to update.');

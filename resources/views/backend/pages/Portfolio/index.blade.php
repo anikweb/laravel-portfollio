@@ -24,11 +24,12 @@
                                     <tr>
                                         <th style="text-align: center">#</th>
                                         <th style="text-align: center">Title</th>
-                                        <th style="text-align: center">Type</th>
-                                        <th style="text-align: center">Summary</th>
+                                        <th style="text-align: center" width="5px">Type</th>
                                         <th style="text-align: center">Thumbnail</th>
                                         <th style="text-align: center">Last Update</th>
-                                        <th colspan="2" style="text-align: center">Action</th>
+                                        @if (auth()->user()->can('edit portfolio')||auth()->user()->can('delete portfolio'))
+                                            <th colspan="2" style="text-align: center">Action</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,16 +37,19 @@
                                         <tr>
                                             <td style="text-align: center">{{ $portfolios->firstItem()+$loop->index }}</td>
                                             <td style="text-align: center">{{ $portfolio->title }}</td>
-                                            <td style="text-align: center">{{ $portfolio->type }}</td>
-                                            <td style="text-align: center">{{ $portfolio->summary }}</td>
+                                            <td style="text-align: center" width="5px">{{ $portfolio->type }}</td>
                                             <td style="text-align: center">
                                                 <img width="120px" src="{{ asset('image/portfolios').'/'.$portfolio->created_at->format('Y/m/').$portfolio->id.'/'.$portfolio->thumbnail }}" alt="{{ $portfolio->title }}">
                                             </td>
                                             <td style="text-align: center">{{ $portfolio->created_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
                                                 <a href="{{ route('PortfolioDetails',$portfolio->slug) }}" class="btn btn-success"><i class="fa fa-eye"></i> Details</a>
-                                                <a href="{{ route('PortfolioEdit',$portfolio->slug) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
-                                                <a href="{{ route('PortfolioDelete',$portfolio->slug) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                @can('edit portfolio')
+                                                    <a href="{{ route('PortfolioEdit',$portfolio->slug) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+                                                @endcan
+                                                @can('delete portfolio')
+                                                    <a href="{{ route('PortfolioDelete',$portfolio->slug) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @empty
@@ -89,8 +93,6 @@
                 swal("Social is safe!");
             }
         });
-
-
     });
     @if (session('success'))
         toastr["success"]("{{ session('success') }}")

@@ -10,9 +10,13 @@ use Illuminate\Support\Str;
 class SocialController extends Controller
 {
     public function SocialAdd(){
-        return view('backend.pages.social.create',[
-            'socialName'=>SocialSites::orderBy('site_name','asc')->get(),
-        ]);
+        if(auth()->user()->can('add social')){
+            return view('backend.pages.social.create',[
+                'socialName'=>SocialSites::orderBy('site_name','asc')->get(),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function SocialPost(Request $request){
         if(Str::is('www.*',$request->social_username)){
@@ -34,15 +38,23 @@ class SocialController extends Controller
         return redirect()->route('SocialView')->with('success',$social->socialSite->site_name.' Added.');
     }
     public function SocialView(){
-        return view('backend.pages.social.index',[
-            'social' =>Social::orderBy('priority','asc')->paginate(10),
-        ]);
+        if(auth()->user()->can('view social')){
+            return view('backend.pages.social.index',[
+                'social' =>Social::orderBy('priority','asc')->paginate(10),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function SocialEdit($id){
-        return view('backend.pages.social.edit',[
-            'socialName'=> SocialSites::orderBy('site_name','asc')->get(),
-            'socialLink'=>Social::findOrFail($id),
-        ]);
+        if(auth()->user()->can('edit social')){
+            return view('backend.pages.social.edit',[
+                'socialName'=> SocialSites::orderBy('site_name','asc')->get(),
+                'socialLink'=>Social::findOrFail($id),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function SocialUpdate(Request $request){
         $social = Social::findorFail($request->social_pre_id);
@@ -66,13 +78,22 @@ class SocialController extends Controller
         return redirect()->route('SocialView')->with('success',$social->socialSite->site_name.' Updated.');
     }
     public function SocialDelete($id){
-        // return $id;
-        $social = Social::findOrFail($id);
-        $social->delete();
-        return redirect()->route('SocialView')->with('success','Social has been moved to trash');
+
+        if(auth()->user()->can('delete social')){
+            // return $id;
+            $social = Social::findOrFail($id);
+            $social->delete();
+            return redirect()->route('SocialView')->with('success','Social has been moved to trash');
+        }else{
+            return abort('404');
+        }
     }
     public function SocialSiteAdd(){
-        return view('backend.pages.social_site.create');
+        if(auth()->user()->can('add social site')){
+            return view('backend.pages.social_site.create');
+        }else{
+            return abort('404');
+        }
     }
     public function SocialSitePost(Request $request){
         if(Str::is('www.*',$request->master_url)){
@@ -92,26 +113,40 @@ class SocialController extends Controller
         $social_site->save();
         return redirect()->route('SocialSiteView')->with('success',$social_site->site_name.' Added.');
     }
-    public function SocialSiteView(){
-        return view('backend.pages.social_site.index',[
-            'social_sites'=>SocialSites::latest()->paginate(10),
-        ]);
+    public function SocialSiteView()
+    {
+        if(auth()->user()->can('view social site')){
+            return view('backend.pages.social_site.index',[
+                'social_sites'=>SocialSites::latest()->paginate(10),
+            ]);
+        }else{
+            return abort('404');
+        }
+
     }
     public function SocialSiteDelete($id){
-        $socialSite = SocialSites::findOrFail($id);
-        if($socialSite->social->count() < 1){
-            $socialSite->delete();
-            return redirect()->route('SocialSiteView')->with('success','Social Sites has been moved to trash!');
-        }
-        else{
-            return redirect()->route('SocialSiteView')->with('fail','failed, this social site has been used to your socials.');
+        if(auth()->user()->can('delete social site')){
+            $socialSite = SocialSites::findOrFail($id);
+            if($socialSite->social->count() < 1){
+                $socialSite->delete();
+                return redirect()->route('SocialSiteView')->with('success','Social Sites has been moved to trash!');
+            }
+            else{
+                return redirect()->route('SocialSiteView')->with('fail','failed, this social site has been used to your socials.');
+            }
+        }else{
+            return abort('404');
         }
     }
     public function SocialSiteEdit($id){
-        // return $id;
-        return view('backend.pages.social_site.edit',[
-            'socialSite'=>SocialSites::findOrFail($id),
-        ]);
+        if(auth()->user()->can('edit social site')){
+            // return $id;
+            return view('backend.pages.social_site.edit',[
+                'socialSite'=>SocialSites::findOrFail($id),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function SocialSiteUpdate(Request $request){
         $socialSite = SocialSites::findOrFail($request->social_site_id);
@@ -138,10 +173,14 @@ class SocialController extends Controller
         return response()->json('https://'.$getSocialUrl->master_url.'/');
     }
     public function socialPriorityUpdate(Request $request){
-        $social = Social::findOrFail($request->social_id);
-        $social->priority = $request->social_priority;
-        $social->save();
-        return back()->with('success','Priority Changed');
+        if(auth()->user()->can('edit social')){
+            $social = Social::findOrFail($request->social_id);
+            $social->priority = $request->social_priority;
+            $social->save();
+            return back()->with('success','Priority Changed');
+        }else{
+            return abort('404');
+        }
     }
 
 }

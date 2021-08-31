@@ -10,16 +10,25 @@ use Intervention\Image\Facades\Image;
 
 class AboutControllers extends Controller
 {
+
     function aboutSettings(){
-        return view('backend.pages.about-settings',[
-            'about' => About::first(),
-        ]);
+        if(auth()->user()->can('settings')){
+            return view('backend.pages.about-settings',[
+                'about' => About::first(),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     function aboutSettingsEdit($slug){
-        return view('backend.pages.about-settings-edit',[
-            'about' =>About::first(),
-            'slug' =>$slug,
-        ]);
+        if(auth()->user()->can('settings')){
+            return view('backend.pages.about-settings-edit',[
+                'about' =>About::first(),
+                'slug' =>$slug,
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     function aboutSettingsUpdate(Request $request){
         // return $request;

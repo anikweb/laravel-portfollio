@@ -34,17 +34,23 @@
                                         <tr>
                                             <td style="text-align: center">
                                                 <span class="priority-span" style="cursor: pointer">{{ $socialItem->priority }}</span>
-                                                <a data-toggle="modal" data-target="#myModal{{ $socialItem->id }}" title="change priority" href="#" class="text-info priority-edit">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
+                                                @can('edit social')
+                                                    <a data-toggle="modal" data-target="#myModal{{ $socialItem->id }}" title="change priority" href="#" class="text-info priority-edit">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                @endcan
                                             </td>
                                             <td style="text-align: center">{{ $socialItem->socialSite->site_name }}</td>
                                             <td style="text-align: center">{{ 'https://'.$socialItem->socialSite->master_url.'/'.$socialItem->url_name }}</td>
                                             <td style="text-align: center">{{ $socialItem->updated_at->diffForHumans() }}</td>
                                             <td style="text-align: center">
                                                 <a class="btn btn-primary" target="_blank" href="{{ 'https://'.$socialItem->socialSite->master_url.'/'.$socialItem->url_name }}"><span class="  icon-paper-plane"></span> Visit</a>
-                                                <a class="btn btn-info" href="{{ route('socialEdit',$socialItem->id) }}"><span class="icon-note"></span> Edit</a>
-                                                <button type="button" data-id="{{ $socialItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
+                                                @can('edit social')
+                                                    <a class="btn btn-info" href="{{ route('socialEdit',$socialItem->id) }}"><span class="icon-note"></span> Edit</a>
+                                                @endcan
+                                                @can('delete social')
+                                                    <button type="button" data-id="{{ $socialItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
+                                                @endcan
                                             </td>
                                             {{--  Modal   --}}
                                             <div class="modal fade" style="margin-top:30px !important" id="myModal{{ $socialItem->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

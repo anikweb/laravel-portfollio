@@ -347,183 +347,225 @@
                             </a>
 
                         </li>
-                        <li class="droplink @if(Route::is('testimonialView') || Route::is('testimonialAdd')||Route::is('testimonialEdit')) open active @endif">
-                            <a href="#" class="waves-effect waves-button" target="_blank">
-                                <span class="menu-icon icon-speech"></span>
-                                <p>Testimonial</p>
-                                <span class="arrow"></span>
-                                <span class="active-page"></span>
-                            </a>
-                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li class="@if(Route::is('testimonialView')||Route::is('testimonialEdit')) active @endif">
-                                    <a href="{{ route('testimonialView') }}" class="waves-effect waves-button ">
-                                        <span class="icon-eye"></span>
-                                        <p>View Testimonial</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('testimonialAdd')) active @endif">
-                                    <a href="{{ route('testimonialAdd') }}" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p> Add Testimonial</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="droplink @if(Route::is('skillView')||Route::is('skillAdd')||Route::is('skillEdit')) open active @endif">
-                            <a href="#" class="waves-effect waves-button" target="_blank">
-                                <span class="menu-icon  icon-support"></span>
-                                <p>Skills</p>
-                                <span class="arrow"></span>
-                                <span class="active-page"></span>
-                            </a>
-                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li class="@if(Route::is('skillView')||Route::is('skillEdit'))active @endif">
-                                    <a href="{{ route('skillView') }}" class="waves-effect waves-button">
-                                        <span class="icon-eye"></span>
-                                        <p>View Skills</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('skillAdd')) active @endif">
-                                    <a href="{{ route('skillAdd') }}" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p> Add Skills</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="droplink">
-                            <a href="#" class="waves-effect waves-button" target="_blank">
-                                <span class="menu-icon  icon-support"></span>
-                                <p>Services</p>
-                                <span class="arrow"></span><span class="active-page"></span>
-                            </a>
-                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li>
-                                    <a href="#" class="waves-effect waves-button">
-                                        <span class="icon-eye"></span>
-                                        <p>View Service</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p>Add Service</p>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="waves-effect waves-button">
-                                        <span class="icon-trash"></span>
-                                        <p>Trash</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="droplink @if(Route::is('PortfolioAdd')||Route::is('PortfolioEdit')||Route::is('PortfolioView')||Route::is('PortfolioDetails')) open active @endif">
-                            <a href="#" class="waves-effect waves-button" target="_blank">
-                                <span class="menu-icon  icon-support"></span>
-                                <p>Portfolios</p>
-                                <span class="arrow"></span>
-                                <span class="active-page"></span>
-                            </a>
-                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li class="@if(Route::is('PortfolioView')||Route::is('PortfolioEdit')||Route::is('PortfolioDetails')) active @endif">
-                                    <a href="{{ route('PortfolioView') }}" class="waves-effect waves-button">
-                                        <span class="icon-eye"></span>
-                                        <p> View Portfolios</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('PortfolioAdd')) active @endif">
-                                    <a href="{{ route('PortfolioAdd') }}" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p>Add Portfolios</p>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#" class="waves-effect waves-button">
-                                        <span class="icon-trash"></span>
-                                        <p>Trash</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')||Route::is('SocialSiteView')||Route::is('SocialSiteEdit')||Route::is('SocialSiteAdd')||Route::is('socialEdit')) active open @endif">
-                            <a href="#" class="waves-effect waves-button" target="_blank">
-                                <span class="menu-icon  icon-support"></span>
-                                <p>Socials</p>
-                                <span class="arrow"></span>
-                                <span class="active-page"></span>
-                            </a>
-                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li class="@if(Route::is('SocialView') || Route::is('SocialEdit')||Route::is('socialEdit')) active @endif">
-                                    <a href="{{  route('SocialView') }}" class="waves-effect waves-button">
-                                        <span class="icon-eye"></span>
-                                        <p> View Socials</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('SocialAdd')) active @endif">
-                                    <a href="{{ route('SocialAdd') }}" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p>Add Social</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('SocialSiteView')||Route::is('SocialSiteEdit')) active @endif">
-                                    <a href="{{ route('SocialSiteView') }}" class="waves-effect waves-button">
-                                        <span class="icon-eye"></span>
-                                        <p>View Social Site</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('SocialSiteAdd')) active @endif">
-                                    <a href="{{ route('SocialSiteAdd') }}" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p>Add Social Site</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="droplink @if(Route::is('assign.user')||Route::is('user.role.edit')||Route::is('role.index')||Route::is('role.create')||Route::is('role.show')||Route::is('role.edit')) open active @endif">
-                            <a href="#" class="waves-effect waves-button" target="_blank">
-                                <span class="menu-icon  icon-support"></span>
-                                <p>Role Manager</p>
-                                <span class="arrow"></span>
-                                <span class="active-page"></span>
-                            </a>
-                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li class="@if(Route::is('role.create')) active @endif">
-                                    <a href="{{ route('role.create') }}" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p>Add Role</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('role.index')||Route::is('role.show')||Route::is('role.edit')) active @endif">
-                                    <a href="{{ route('role.index') }}" class="waves-effect waves-button">
-                                        <span class="icon-eye"></span>
-                                        <p>View Role</p>
-                                    </a>
-                                </li>
-                                <li class="@if(Route::is('assign.user')||Route::is('user.role.edit')) active @endif">
-                                    <a href="{{ route('assign.user') }}" class="waves-effect waves-button">
-                                        <span class="icon-plus"></span>
-                                        <p>Assign User</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="droplink @if(Route::is('siteSettings')||Route::is('siteSettingsEdit')||Route::is('aboutSettings')||Route::is('aboutSettingsEdit')) open active @endif">
-                            <a href="#" class="waves-effect waves-button">
-                                <span class="menu-icon icon-settings"></span>
-                                <p>Settings</p>
-                                <span class="arrow"></span>
-                                <span class="active-page"></span>
-                            </a>
-                            <ul class="sub-menu" style="display: none; background:#3a3a3a">
-                                <li class="@if(Route::is('siteSettings')||Route::is('siteSettingsEdit')) active @endif">
-                                    <a href="{{ route('siteSettings') }}" class="waves-effect waves-button" >Site Settings</a>
-                                </li>
-                                <li class="@if(Route::is('aboutSettings')||Route::is('aboutSettingsEdit')) active @endif">
-                                    <a href="{{ route('aboutSettings') }}" class="waves-effect waves-button" >About</a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (auth()->user()->can('view testimonial')||auth()->user()->can('add testimonial'))
+                            <li class="droplink @if(Route::is('testimonialView') || Route::is('testimonialAdd')||Route::is('testimonialEdit')) open active @endif">
+                                <a href="#" class="waves-effect waves-button" target="_blank">
+                                    <span class="menu-icon icon-speech"></span>
+                                    <p>Testimonial</p>
+                                    <span class="arrow"></span>
+                                    <span class="active-page"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    @can('view testimonial')
+                                        <li class="@if(Route::is('testimonialView')||Route::is('testimonialEdit')) active @endif">
+                                            <a href="{{ route('testimonialView') }}" class="waves-effect waves-button ">
+                                                <span class="icon-eye"></span>
+                                                <p>View Testimonial</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('add testimonial')
+                                        <li class="@if(Route::is('testimonialAdd')) active @endif">
+                                            <a href="{{ route('testimonialAdd') }}" class="waves-effect waves-button">
+                                                <span class="icon-plus"></span>
+                                                <p> Add Testimonial</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endif
+                        @if (auth()->user()->can('view skill')||auth()->user()->can('add skill'))
+                            <li class="droplink @if(Route::is('skillView')||Route::is('skillAdd')||Route::is('skillEdit')) open active @endif">
+                                <a href="#" class="waves-effect waves-button" target="_blank">
+                                    <span class="menu-icon  icon-support"></span>
+                                    <p>Skills</p>
+                                    <span class="arrow"></span>
+                                    <span class="active-page"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    @can('view skill')
+                                        <li class="@if(Route::is('skillView')||Route::is('skillEdit'))active @endif">
+                                            <a href="{{ route('skillView') }}" class="waves-effect waves-button">
+                                                <span class="icon-eye"></span>
+                                                <p>View Skills</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('add skill')
+                                        <li class="@if(Route::is('skillAdd')) active @endif">
+                                            <a href="{{ route('skillAdd') }}" class="waves-effect waves-button">
+                                                <span class="icon-plus"></span>
+                                                <p>Add Skills</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endif
+                        @if (auth()->user()->can('view service')||auth()->user()->can('add service')||auth()->user()->can('trash service'))
+                            <li class="droplink">
+                                <a href="#" class="waves-effect waves-button" target="_blank">
+                                    <span class="menu-icon  icon-support"></span>
+                                    <p>Services</p>
+                                    <span class="arrow"></span><span class="active-page"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    @can('view service')
+                                        <li>
+                                            <a href="#" class="waves-effect waves-button">
+                                                <span class="icon-eye"></span>
+                                                <p>View Service</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('add service')
+                                        <li>
+                                            <a href="#" class="waves-effect waves-button">
+                                                <span class="icon-plus"></span>
+                                                <p>Add Service</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('trash service')
+                                        <li class="">
+                                            <a href="#" class="waves-effect waves-button">
+                                                <span class="icon-trash"></span>
+                                                <p>Trash</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endif
+                        @if (auth()->user()->can('view portfolio')||auth()->user()->can('add portfolio')||auth()->user()->can('trash portfolio'))
+                            <li class="droplink @if(Route::is('PortfolioAdd')||Route::is('PortfolioEdit')||Route::is('PortfolioView')||Route::is('PortfolioDetails')) open active @endif">
+                                <a href="#" class="waves-effect waves-button" target="_blank">
+                                    <span class="menu-icon  icon-support"></span>
+                                    <p>Portfolios</p>
+                                    <span class="arrow"></span>
+                                    <span class="active-page"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    @can('view portfolio')
+                                        <li class="@if(Route::is('PortfolioView')||Route::is('PortfolioEdit')||Route::is('PortfolioDetails')) active @endif">
+                                            <a href="{{ route('PortfolioView') }}" class="waves-effect waves-button">
+                                                <span class="icon-eye"></span>
+                                                <p> View Portfolios</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('add portfolio')
+                                        <li class="@if(Route::is('PortfolioAdd')) active @endif">
+                                            <a href="{{ route('PortfolioAdd') }}" class="waves-effect waves-button">
+                                                <span class="icon-plus"></span>
+                                                <p>Add Portfolios</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('trash portfolio')
+                                        <li class="">
+                                            <a href="#" class="waves-effect waves-button">
+                                                <span class="icon-trash"></span>
+                                                <p>Trash</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endif
+                        @if (auth()->user()->can('view social')||auth()->user()->can('add social')||auth()->user()->can('view social site')||auth()->user()->can('add social site'))
+                            <li class="droplink @if(Route::is('SocialView')||Route::is('SocialEdit')||Route::is('SocialAdd')||Route::is('SocialSiteView')||Route::is('SocialSiteEdit')||Route::is('SocialSiteAdd')||Route::is('socialEdit')) active open @endif">
+                                <a href="#" class="waves-effect waves-button" target="_blank">
+                                    <span class="menu-icon  icon-support"></span>
+                                    <p>Socials</p>
+                                    <span class="arrow"></span>
+                                    <span class="active-page"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    @can('view social')
+                                        <li class="@if(Route::is('SocialView') || Route::is('SocialEdit')||Route::is('socialEdit')) active @endif">
+                                            <a href="{{  route('SocialView') }}" class="waves-effect waves-button">
+                                                <span class="icon-eye"></span>
+                                                <p> View Socials</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('add social')
+                                        <li class="@if(Route::is('SocialAdd')) active @endif">
+                                            <a href="{{ route('SocialAdd') }}" class="waves-effect waves-button">
+                                                <span class="icon-plus"></span>
+                                                <p>Add Social</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('view social site')
+                                        <li class="@if(Route::is('SocialSiteView')||Route::is('SocialSiteEdit')) active @endif">
+                                            <a href="{{ route('SocialSiteView') }}" class="waves-effect waves-button">
+                                                <span class="icon-eye"></span>
+                                                <p>View Social Site</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('add social site')
+                                        <li class="@if(Route::is('SocialSiteAdd')) active @endif">
+                                            <a href="{{ route('SocialSiteAdd') }}" class="waves-effect waves-button">
+                                                <span class="icon-plus"></span>
+                                                <p>Add Social Site</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endif
+                        @if (auth()->user()->can('role management'))
+                            <li class="droplink @if(Route::is('assign.user')||Route::is('user.role.edit')||Route::is('role.index')||Route::is('role.create')||Route::is('role.show')||Route::is('role.edit')) open active @endif">
+                                <a href="#" class="waves-effect waves-button" target="_blank">
+                                    <span class="menu-icon  icon-support"></span>
+                                    <p>Role Manager</p>
+                                    <span class="arrow"></span>
+                                    <span class="active-page"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    <li class="@if(Route::is('role.create')) active @endif">
+                                        <a href="{{ route('role.create') }}" class="waves-effect waves-button">
+                                            <span class="icon-plus"></span>
+                                            <p>Add Role</p>
+                                        </a>
+                                    </li>
+                                    <li class="@if(Route::is('role.index')||Route::is('role.show')||Route::is('role.edit')) active @endif">
+                                        <a href="{{ route('role.index') }}" class="waves-effect waves-button">
+                                            <span class="icon-eye"></span>
+                                            <p>View Role</p>
+                                        </a>
+                                    </li>
+                                    <li class="@if(Route::is('assign.user')||Route::is('user.role.edit')) active @endif">
+                                        <a href="{{ route('assign.user') }}" class="waves-effect waves-button">
+                                            <span class="icon-plus"></span>
+                                            <p>Assign User</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                        @if (auth()->user()->can('settings'))
+                            <li class="droplink @if(Route::is('siteSettings')||Route::is('siteSettingsEdit')||Route::is('aboutSettings')||Route::is('aboutSettingsEdit')) open active @endif">
+                                <a href="#" class="waves-effect waves-button">
+                                    <span class="menu-icon icon-settings"></span>
+                                    <p>Settings</p>
+                                    <span class="arrow"></span>
+                                    <span class="active-page"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none; background:#3a3a3a">
+                                    <li class="@if(Route::is('siteSettings')||Route::is('siteSettingsEdit')) active @endif">
+                                        <a href="{{ route('siteSettings') }}" class="waves-effect waves-button" >Site Settings</a>
+                                    </li>
+                                    <li class="@if(Route::is('aboutSettings')||Route::is('aboutSettingsEdit')) active @endif">
+                                        <a href="{{ route('aboutSettings') }}" class="waves-effect waves-button" >About</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
 
                     </ul>
                 </div><!-- Page Sidebar Inner -->

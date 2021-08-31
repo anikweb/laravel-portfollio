@@ -10,13 +10,21 @@ use Illuminate\Support\Str;
 class SiteSettingsControllers extends Controller
 {
     function siteSettings(){
-        return view('backend.pages.site-settings');
+        if(auth()->user()->can('settings')){
+            return view('backend.pages.site-settings');
+        }else{
+            return abort('404');
+        }
     }
 
     function siteSettingsEdit($slug){
-        return view('backend.pages.site-settings-edit',[
-            'slug' =>$slug,
-        ]);
+        if(auth()->user()->can('settings')){
+            return view('backend.pages.site-settings-edit',[
+                'slug' =>$slug,
+            ]);
+        }else{
+            return abort('404');
+        }
     }
 
     function siteSettingsUpdate(Request $request){

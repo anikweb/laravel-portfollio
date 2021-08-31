@@ -11,12 +11,21 @@ use Intervention\Image\Facades\Image;
 class PortfoliosController extends Controller
 {
     public function PortfolioView(){
-        return view('backend.pages.Portfolio.index',[
-            'portfolios'=>Portfolios::latest()->paginate(10),
-        ]);
+        if(auth()->user()->can('view portfolio')){
+            return view('backend.pages.Portfolio.index',[
+                'portfolios'=>Portfolios::latest()->paginate(10),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function PortfolioAdd(){
-        return view('backend.pages.Portfolio.create');
+        if(auth()->user()->can('add portfolio')){
+            return view('backend.pages.Portfolio.create');
+        }else{
+            return abort('404');
+        }
+
     }
     public function PortfolioPost(Request $request){
         $request->validate([
@@ -47,15 +56,22 @@ class PortfoliosController extends Controller
         return redirect()->route('PortfolioView')->with('success','New Portfolio Added.');
     }
     public function PortfolioDetails($slug){
-
-        return view('backend.pages.Portfolio.show',[
-            'portfolio' => Portfolios::where('slug',$slug)->first(),
-        ]);
+        if(auth()->user()->can('view portfolio')){
+            return view('backend.pages.Portfolio.show',[
+                'portfolio' => Portfolios::where('slug',$slug)->first(),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function PortfolioEdit($slug){
-        return view('backend.pages.Portfolio.edit',[
-            'portfolio' => Portfolios::where('slug',$slug)->first(),
-        ]);
+        if(auth()->user()->can('edit portfolio')){
+            return view('backend.pages.Portfolio.edit',[
+                'portfolio' => Portfolios::where('slug',$slug)->first(),
+            ]);
+        }else{
+            return abort('404');
+        }
     }
     public function PortfolioUpdate(Request $request){
         $portfolio = Portfolios::where('slug',$request->portfolio_slug)->first();
@@ -100,8 +116,11 @@ class PortfoliosController extends Controller
         return redirect()->route('PortfolioView')->with('success','Portfolio Updated');
     }
     public function PortfolioDelete($slug){
-        $portfolio = Portfolios::where('slug',$slug)->first()->delete();
-        return back()->with('success','Portfolio Deleted.');
-
+        if(auth()->user()->can('delete portfolio')){
+            $portfolio = Portfolios::where('slug',$slug)->first()->delete();
+            return back()->with('success','Portfolio Deleted.');
+        }else{
+            return abort('404');
+        }
     }
 }

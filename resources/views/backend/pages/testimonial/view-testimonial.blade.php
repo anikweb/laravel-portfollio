@@ -28,7 +28,9 @@
                                         <th style="text-align: center">Image</th>
                                         <th style="text-align: center">Praise</th>
                                         <th style="text-align: center">Created at</th>
-                                        <th colspan="2" style="text-align: center">Action</th>
+                                        @if (auth()->user()->can('edit testimonial')||auth()->user()->can('delete testimonial'))
+                                            <th colspan="2" style="text-align: center">Action</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,12 +44,16 @@
                                             </td>
                                             <td>{{ $testItem->praise }}</td>
                                             <td>{{ $testItem->created_at->diffForHumans() }}</td>
-                                            <td>
-                                                <a class="btn btn-info" href="{{ route('testimonialEdit',$testItem->id) }}"><span class="icon-note"></span> Edit</a>
-                                            </td>
-                                            <td>
-                                                <button type="button" data-id="{{ $testItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
-                                            </td>
+                                            @can('edit testimonial')
+                                                <td>
+                                                    <a class="btn btn-info" href="{{ route('testimonialEdit',$testItem->id) }}"><span class="icon-note"></span> Edit</a>
+                                                </td>
+                                            @endcan
+                                            @can('delete testimonial')
+                                                <td>
+                                                    <button type="button" data-id="{{ $testItem->id }}" class="btn btn-danger moveTrash" href="#"><span class="icon-trash"></span> Move to Trash</button>
+                                                </td>
+                                            @endcan
 
                                         </tr>
                                     @endforeach
