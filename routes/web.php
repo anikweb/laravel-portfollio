@@ -7,6 +7,7 @@ use App\Http\Controllers\SiteSettingsControllers;
 use App\Http\Controllers\AboutControllers;
 use App\Http\Controllers\PortfoliosController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TestimonialControllers;
@@ -87,6 +88,10 @@ Route::get('dashboard/role/assign/user',[RoleController::class,'assignUser'])->m
 Route::post('dashboard/role/assign/user/post',[RoleController::class,'assignUserPost'])->middleware(['auth'])->name('assign.user.post');
 Route::get('dashboard/user/role/edit/{id}',[RoleController::class,'userRoleEdit'])->middleware(['auth'])->name('user.role.edit');
 Route::post('dashboard/user/role/edit/post',[RoleController::class,'userRoleEditPost'])->middleware(['auth'])->name('user.role.edit.post');
-Route::resource('role', RoleController::class);
+Route::resource('role', RoleController::class)->middleware(['auth']);
+// Service
+Route::get('get/icon/{id}',[ServiceController::class, 'getIcon'])->name('getIcon')->middleware(['auth']);
+Route::resource('service', ServiceController::class);
+
 
 require __DIR__.'/auth.php';

@@ -12,6 +12,7 @@ class AboutControllers extends Controller
 {
 
     function aboutSettings(){
+
         if(auth()->user()->can('settings')){
             return view('backend.pages.about-settings',[
                 'about' => About::first(),

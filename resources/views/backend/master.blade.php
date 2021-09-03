@@ -3,7 +3,7 @@
     <head>
         <!-- Title -->
         <title>
-            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @elseif(Route::is('socialEdit')) Edit Social @elseif(Route::is('PortfolioView')) Portfolios @elseif(Route::is('PortfolioEdit')) Edit Portfolio @elseif(Route::is('PortfolioAdd')) Add Portfolio @elseif(Route::is('PortfolioDetails')) Portfolio Details @elseif(Route::is('assign.user')) Assign User @elseif(Route::is('user.role.edit')) Edit Assigned User @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Roles @elseif(Route::is('role.show')) Roles Details @elseif(Route::is('role.edit')) Edit Roles @endif | {{ siteinfo()->title }}</title>
+            @if (Route::is('dashboard')) Dashboard @elseif(Route::is('siteSettings')) Site Settings @elseif(Route::is('siteSettingsEdit')) Edit Site Settings @elseif(Route::is('aboutSettings')) About @elseif(Route::is('aboutSettingsEdit')) Edit About @elseif(Route::is('testimonialView')) Testimonials @elseif(Route::is('testimonialAdd')) Add Testimonial @elseif(Route::is('testimonialEdit')) Edit Testimonial @elseif(Route::is('skillView')) Skills @elseif(Route::is('skillAdd')) Add Skill @elseif(Route::is('skillEdit')) Edit Skill @elseif(Route::is('SocialView')) Socials @elseif(Route::is('SocialEdit')) Edit Social @elseif(Route::is('SocialAdd')) Add Social @elseif(Route::is('SocialSiteView')) Social Sites @elseif(Route::is('SocialSiteEdit')) Edit Social Site @elseif(Route::is('SocialSiteAdd')) Add Social Site @elseif(Route::is('socialEdit')) Edit Social @elseif(Route::is('PortfolioView')) Portfolios @elseif(Route::is('PortfolioEdit')) Edit Portfolio @elseif(Route::is('PortfolioAdd')) Add Portfolio @elseif(Route::is('PortfolioDetails')) Portfolio Details @elseif(Route::is('assign.user')) Assign User @elseif(Route::is('user.role.edit')) Edit Assigned User @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Roles @elseif(Route::is('role.show')) Roles Details @elseif(Route::is('role.edit')) Edit Roles @elseif(Route::is('service.create')) Add Service @elseif(Route::is('service.edit')) Edit Service @elseif(Route::is('service.index')) Services @endif | {{ siteinfo()->title }}</title>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Admin Dashboard Template" />
@@ -404,7 +404,7 @@
                             </li>
                         @endif
                         @if (auth()->user()->can('view service')||auth()->user()->can('add service')||auth()->user()->can('trash service'))
-                            <li class="droplink">
+                            <li class="droplink @if(Route::is('service.create')||Route::is('service.destroy')||Route::is('service.edit')||Route::is('service.index')) open active @endif">
                                 <a href="#" class="waves-effect waves-button" target="_blank">
                                     <span class="menu-icon  icon-support"></span>
                                     <p>Services</p>
@@ -412,16 +412,16 @@
                                 </a>
                                 <ul class="sub-menu" style="display: none; background:#3a3a3a">
                                     @can('view service')
-                                        <li>
-                                            <a href="#" class="waves-effect waves-button">
+                                        <li class="@if(Route::is('service.index')||Route::is('service.edit')) active @endif">
+                                            <a href="{{ route('service.index') }}" class="waves-effect waves-button">
                                                 <span class="icon-eye"></span>
                                                 <p>View Service</p>
                                             </a>
                                         </li>
                                     @endcan
                                     @can('add service')
-                                        <li>
-                                            <a href="#" class="waves-effect waves-button">
+                                        <li class="@if(Route::is('service.create')) active @endif">
+                                            <a href="{{ route('service.create') }}" class="waves-effect waves-button">
                                                 <span class="icon-plus"></span>
                                                 <p>Add Service</p>
                                             </a>
@@ -566,7 +566,6 @@
                                 </ul>
                             </li>
                         @endif
-
                     </ul>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->

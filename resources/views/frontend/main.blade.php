@@ -13,24 +13,15 @@ https://templatemo.com/tm-528-elegance
 -->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/bootstrap.min.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/font-awesome.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/fullpage.min.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/owl.carousel.css') }}">
-
     <link rel="stylesheet" href="{{ asset('front/css/animate.css') }}">
-
     <link rel="stylesheet" href="{{ asset('front/css/templatemo-style.css') }}">
-
     <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
     <link rel="icon" href="{{ asset('front/images/site-icon/'.siteInfo()->icon) }}">
-
     </head>
-
     <body>
-
     <div id="video">
         <div class="preloader">
             <div class="preloader-bounce">
@@ -96,7 +87,7 @@ https://templatemo.com/tm-528-elegance
                                         <div class="about-contentbox">
                                             <div class="animate" data-animate="fadeInUp">
                                                 <span style="font-size:18px !important;">Who am i?</span>
-                                                <h2>About Me</h2>
+                                                <h2>About Me </h2>
                                                 <p>{{ $about->about }}</p>
                                             </div>
                                             <div class="facts-list owl-carousel">
@@ -132,7 +123,6 @@ https://templatemo.com/tm-528-elegance
                     </div>
                 </div>
             </div>
-
             <div class="section animated-row" data-section="services">
                 <div class="section-inner">
                     <div class="row justify-content-center">
@@ -146,7 +136,7 @@ https://templatemo.com/tm-528-elegance
                                     @foreach ($services as $service)
                                         <div class="item animate" data-animate="fadeInUp">
                                             <div class="service-box">
-                                                <span class="service-icon"><i class="{{ $service->icon_name }}" aria-hidden="true"></i></span>
+                                                <span class="service-icon"><i class="fa {{ $service->icon_name }}" aria-hidden="true"></i></span>
                                                 <h3>{{ $service->service_name }}</h3>
                                                 <p>{{ $service->summary }}</p>
                                             </div>
@@ -158,7 +148,6 @@ https://templatemo.com/tm-528-elegance
                     </div>
                 </div>
             </div>
-
             <div class="section animated-row" data-section="skill">
                 <div class="section-inner">
                     <div class="row justify-content-center">
@@ -187,7 +176,6 @@ https://templatemo.com/tm-528-elegance
                     </div>
                 </div>
             </div>
-
             <div class="section animated-row" data-section="portfolios">
                 <div class="section-inner">
                     <div class="row justify-content-center">
@@ -225,7 +213,6 @@ https://templatemo.com/tm-528-elegance
                     </div>
                 </div>
             </div>
-
             <div class="section animated-row" data-section="tesimonials">
                 <div class="section-inner">
                     <div class="row justify-content-center">
@@ -261,7 +248,6 @@ https://templatemo.com/tm-528-elegance
                     </div>
                 </div>
             </div>
-
             <div class="section animated-row" data-section="contact">
                 <div class="section-inner">
                     <div class="row justify-content-center">
@@ -312,30 +298,22 @@ https://templatemo.com/tm-528-elegance
             <div class="text-right">
                 <ul class="social-icons">
                     @foreach ($socials as $social)
-                    <li><a href="{{ 'https://'.$social->socialSite->master_url.'/'.$social->url_name }}" target="_blank" title="{{ $social->socialSite->site_name }}"><i class="{{ $social->socialSite->site_icon }}"></i></a></li>
+                        <li>
+                            <a href="{{ 'https://'.$social->socialSite->master_url.'/'.$social->url_name }}" target="_blank" title="{{ $social->socialSite->site_name }}"><i class="{{ $social->socialSite->site_icon }}"></i></a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
         </div>
         {{-- Social end  --}}
     </div>
-
     <script src="{{ asset('front/js/jquery.js') }}"></script>
-
     <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
-
     <script src="{{ asset('front/js/fullpage.min.js') }}"></script>
-
     <script src="{{ asset('front/js/scrolloverflow.js') }}"></script>
-
     <script src="{{ asset('front/js/owl.carousel.min.js') }}"></script>
-
     <script src="{{ asset('front/js/jquery.inview.min.js') }}"></script>
-
     <script src="{{ asset('front/js/form.js') }}"></script>
-
     <script src="{{ asset('front/js/custom.js') }}"></script>
-
-
   </body>
 </html>
